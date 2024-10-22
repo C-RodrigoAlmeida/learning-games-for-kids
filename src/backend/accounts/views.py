@@ -25,18 +25,17 @@ class UserViewSet(viewsets.ViewSet):
         username = request.data.get('username')
         password = request.data.get('password')
 
-        # Authenticate the user
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)  # Start a session
+            login(request, user)
             return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
     def logout(self, request):
         """Handle session-based user logout"""
-        logout(request)  # End the session
+        logout(request)
         return Response({'message': 'Logout successful'}, status=status.HTTP_200_OK)
 
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
