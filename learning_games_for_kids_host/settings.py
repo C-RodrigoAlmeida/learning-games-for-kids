@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "django_filters",
     "rest_framework",
+    "drf_spectacular",
 
     "src.backend.core",
     "src.backend.words_soup_game",
@@ -131,6 +132,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #DRF
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
     ],
@@ -139,4 +141,11 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 2
+}
+
+#SEPCTACULAR
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Learning Games For Kids API',
+    'DESCRIPTION': 'API for learning games for kids',
+    'VERSION': '1.0.0',
 }

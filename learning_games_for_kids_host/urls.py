@@ -20,9 +20,17 @@ from django.urls import path, include
 
 from src.backend.words_soup_game.urls import router
 from src.backend.organization.urls import router as org_router
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView
+)
 
 
 urlpatterns = [
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path("admin/", admin.site.urls),
     path("api/v1/words_soup_game/", include(router.urls)),
     path("api/v1/organization/", include(org_router.urls))
