@@ -2,12 +2,14 @@ from rest_framework import serializers
 
 from django.contrib.auth.models import User
 
-from src.backend.organization.models import Membership, Organization
+from src.backend.organization.models import Membership, Organization, Role
 
 class MembershipSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-    Organization = serializers.PrimaryKeyRelatedField(Organization.objects.all())
-    role = RoleSerializer()
+    organization = serializers.PrimaryKeyRelatedField(Organization.objects.all())
+    role = serializers.PrimaryKeyRelatedField(Role.objects.all())
+    role_display = serializers.CharField(source='get_role_display', read_only=True)
+
 
     class Meta:
         model = Membership
@@ -16,6 +18,7 @@ class MembershipSerializer(serializers.ModelSerializer):
             "user",
             "organization",
             "role",
+            "role_display",
             "is_active",
             "created_at",
             "updated_at",
