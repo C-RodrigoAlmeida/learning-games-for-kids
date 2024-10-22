@@ -18,6 +18,7 @@ class Membership(BaseModel):
     is_active = models.BooleanField(default=False)
 
     class Meta:
+        ordering = ['-id']
         unique_together = ("user", "organization")
 
     def __str__(self):
