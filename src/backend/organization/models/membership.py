@@ -9,6 +9,7 @@ class Membership(BaseModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="user")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="organization")
     role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name="role")
+    is_active = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ("user", "organization")
