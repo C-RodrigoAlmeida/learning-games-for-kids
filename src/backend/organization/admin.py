@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from src.backend.organization.models import Membership, Organization, Role
+from src.backend.organization.models import Membership, Organization
 
 # Register your models here.
 @admin.register(Membership)
@@ -12,13 +12,6 @@ class MembershipAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at"
         "deleted_at"
-    ]
-
-@admin.register(Role)
-class RoleAdmin(admin.ModelAdmin):
-    fields = [
-        "id",
-        "identifier"
     ]
 
 @admin.register(Organization)

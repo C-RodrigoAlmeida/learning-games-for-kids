@@ -1,13 +1,8 @@
 from rest_framework import serializers
 
-from django.contrib.auth.models import User
-
-from src.backend.organization.models import Membership, Organization, Role
+from src.backend.organization.models import Membership
 
 class MembershipSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-    organization = serializers.PrimaryKeyRelatedField(queryset=Organization.objects.all())
-    role = serializers.PrimaryKeyRelatedField(queryset=Role.objects.all())
     role_display = serializers.CharField(source='get_role_display', read_only=True)
 
 

@@ -1,1 +1,2 @@
 from .organization_viewset import OrganizationViewSet
+from .membership_viewset import MembershipViewSet

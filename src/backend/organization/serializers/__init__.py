@@ -1,3 +1,2 @@
 from .membership_serializer import MembershipSerializer
 from .organization_serializer import OrganizationSerializer
-from .role_serializer import RoleSerializer
