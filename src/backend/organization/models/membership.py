@@ -7,7 +7,7 @@ from src.backend.organization.models.organization import Organization
 
 class Membership(BaseModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="user")
-    Organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="organization")
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="organization")
     role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name="role")
 
     class Meta:
