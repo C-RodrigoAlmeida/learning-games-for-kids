@@ -3,7 +3,7 @@ from src.backend.organization.models import Organization
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
-        queryset = Organization.objects.all()
+        model = Organization
         fields = [
             "id",
             "name",

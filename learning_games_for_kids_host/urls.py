@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from src.backend.words_soup_game.urls import router
+from src.backend.organization.urls import router as org_router
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/words_soup_game/", include(router.urls))
+    path("api/v1/words_soup_game/", include(router.urls)),
+    path("api/v1/organization/", include(org_router.urls))
 ]
