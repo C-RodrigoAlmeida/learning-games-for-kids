@@ -1,16 +1,17 @@
 from rest_framework import serializers
 from src.backend.words_soup_game.models import Exercise
+from src.backend.core.serializers import BaseSerializer
 
-class ExerciseSerializer(serializers.ModelSerializer):
+__all__ = ['ExerciseSerializer']
+
+class ExerciseSerializer(BaseSerializer):
     
     class Meta:
         model = Exercise
         fields = [
-            'id',
-            'words',
+            'wrong_words',
             'correct_word',
             'is_public',
-            'created_at',
-            'updated_at',
-            'deleted_at',
+            "organization",
+            "created_by"
         ]

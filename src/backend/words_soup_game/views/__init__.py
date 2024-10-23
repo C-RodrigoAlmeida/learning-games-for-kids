@@ -1,2 +1,2 @@
-from .exercise_viewset import ExerciseViewSet
-from .word_viewset import WordViewSet
+from .exercise_viewset import *
+from .word_viewset import *

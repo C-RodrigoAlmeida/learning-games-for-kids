@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from src.backend.core.models import BaseModel
 from src.backend.organization.models.organization import Organization
 
+__all__ = ["Membership"]
 
 class RoleChoices(models.TextChoices):
     ADMIN = 'admin', 'Admin'

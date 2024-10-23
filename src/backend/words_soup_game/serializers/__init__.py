@@ -1,2 +1,2 @@
-from .word_serializer import WordSerializer
-from .exercise_serializer import ExerciseSerializer
+from .word_serializer import *
+from .exercise_serializer import *

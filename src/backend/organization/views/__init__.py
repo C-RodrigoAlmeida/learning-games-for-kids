@@ -1,2 +1,2 @@
-from .organization_viewset import OrganizationViewSet
-from .membership_viewset import MembershipViewSet
+from .organization_viewset import *
+from .membership_viewset import *

@@ -1,6 +1,8 @@
 from django.db import models
 from src.backend.core.models import BaseModel
 
+__all__ = ["Word"]
+
 class Word(BaseModel):
     name = models.CharField(max_length=50)
 

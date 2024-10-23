@@ -1,2 +1,2 @@
-from .exercise import Exercise
-from .word import Word
+from .exercise import *
+from .word import *

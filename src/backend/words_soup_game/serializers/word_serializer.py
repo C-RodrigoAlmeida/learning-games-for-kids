@@ -1,13 +1,11 @@
-from rest_framework import serializers
 from src.backend.words_soup_game.models import Word
+from src.backend.core.serializers import BaseSerializer
 
-class WordSerializer(serializers.ModelSerializer):
+__all__ = ["WordSerializer"]
+
+class WordSerializer(BaseSerializer):
     class Meta:
         model = Word
         fields = [
-            'id',
             'name',
-            'created_at',
-            'updated_at',
-            'deleted_at',
         ]

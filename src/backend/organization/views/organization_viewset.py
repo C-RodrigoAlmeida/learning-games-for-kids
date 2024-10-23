@@ -10,6 +10,8 @@ from src.backend.organization.models.membership import Membership
 from src.backend.organization.serializers import OrganizationSerializer
 from src.backend.organization.serializers.membership_serializer import MembershipSerializer
 
+__all__ = ["OrganizationViewSet"]
+
 class OrganizationViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
 

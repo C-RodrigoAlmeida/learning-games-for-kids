@@ -3,6 +3,8 @@ from django.contrib.auth.models import Group
 
 from src.backend.core.models import BaseModel
 
+__all__ = ["Organization"]
+
 class Organization(BaseModel, Group):
     description = models.TextField(blank=True, null=True, default='')
 
