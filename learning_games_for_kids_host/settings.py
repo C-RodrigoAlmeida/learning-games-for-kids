@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "src.backend.words_soup_game",
     "src.backend.organization",
     "src.backend.accounts",
+    "src.backend.demo_data",
 ]
 
 MIDDLEWARE = [
