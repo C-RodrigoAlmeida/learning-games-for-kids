@@ -8,6 +8,8 @@ class MembershipAdmin(admin.ModelAdmin):
     fields = [
         "user",
         "organization",
+        "role",
+        "is_active"
     ]
 
 @admin.register(Organization)

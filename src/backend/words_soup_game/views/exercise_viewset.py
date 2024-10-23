@@ -8,3 +8,6 @@ __all__ = ["ExerciseViewSet"]
 class ExerciseViewSet(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)

@@ -8,6 +8,9 @@ __all__ = ["MembershipViewSet"]
 class MembershipViewSet(viewsets.ModelViewSet):
     queryset = Membership.objects.select_related('user', 'organization').all()
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
     def get_serializer_class(self) -> MembershipSerializer | MembershipCreateSerializer:
         if self.action == 'create': 
             return MembershipCreateSerializer

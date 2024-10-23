@@ -13,8 +13,8 @@ class RoleChoices(models.TextChoices):
 
 
 class Membership(BaseModel):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="user")
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="organization")
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="membership")
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="membership")
     role = models.CharField(max_length=16, choices=RoleChoices.choices)
     is_active = models.BooleanField(default=False)
 
@@ -23,4 +23,4 @@ class Membership(BaseModel):
         unique_together = ("user", "organization")
 
     def __str__(self):
-        return f"{self.user} - {self.Organization} ({self.role})"
+        return f"{self.user} - {self.organization} ({self.role})"
