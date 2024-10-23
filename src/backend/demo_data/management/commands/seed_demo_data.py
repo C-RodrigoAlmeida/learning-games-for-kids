@@ -66,7 +66,12 @@ class Command(BaseCommand):
             return
 
         self.create_words(words)
-        self.create_exercises(exercises)
+        existing_words = list(Word.objects.all())
+        if not existing_words:
+            self.stdout.write(self.style.WARNING('No existing words found. Please add words to the database first.'))
+            return
+        
+        self.create_exercises(exercises, existing_words)
         self.create_users(users)
         self.create_organizations(organizations)
         self.create_memberships()

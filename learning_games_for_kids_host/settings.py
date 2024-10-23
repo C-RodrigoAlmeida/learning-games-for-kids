@@ -150,4 +150,5 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Learning Games For Kids API',
     'DESCRIPTION': 'API for learning games for kids',
     'VERSION': '1.0.0',
+    'SCHEMA_PATH_PREFIX': '/api',
 }
