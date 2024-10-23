@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import Group
 
-class Organization(Group):
+from src.backend.core.models import BaseModel
+
+class Organization(BaseModel, Group):
     description = models.TextField(blank=True, null=True, default='')
 
     class Meta:

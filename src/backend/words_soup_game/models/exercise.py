@@ -1,11 +1,12 @@
 from django.db import models
+from django.db.models import Q, F
 
 from src.backend.core.models import BaseModel
 from src.backend.words_soup_game.models.word import Word
 
 class Exercise(BaseModel):
-    words = models.ManyToManyField(Word, related_name="words")
-    correct_word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="correct_word")
+    words = models.ManyToManyField(Word, related_name="exercises")
+    correct_word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="correct_word_exercises")
     is_public = models.BooleanField(default=False)
 
     class Meta:

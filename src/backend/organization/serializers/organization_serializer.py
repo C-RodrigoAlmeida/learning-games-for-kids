@@ -1,12 +1,11 @@
 from rest_framework import serializers
 from src.backend.organization.models import Organization
+from src.backend.core.serializers import BaseSerializer
 
-class OrganizationSerializer(serializers.ModelSerializer):
+__all__ = ["OrganizationSerializer"]
 
-    class Meta:
+class OrganizationSerializer(BaseSerializer):
+
+    class Meta(BaseSerializer.Meta):
         model = Organization
-        fields = [
-            "id",
-            "name",
-            "description",
-        ]
+        fields = BaseSerializer.Meta.fields + ["name", "description"]

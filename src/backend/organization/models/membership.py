@@ -5,16 +5,16 @@ from src.backend.core.models import BaseModel
 from src.backend.organization.models.organization import Organization
 
 
-class RoleChoices(models.IntegerChoices):
-    ADMIN = 1, 'Admin'
-    TEACHER = 2, 'Teacher'
-    STUDENT  = 3, 'Student'
+class RoleChoices(models.TextChoices):
+    ADMIN = 'admin', 'Admin'
+    TEACHER = 'teacher', 'Teacher'
+    STUDENT  = 'student', 'Student'
 
 
 class Membership(BaseModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="user")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="organization")
-    role = models.IntegerField(choices=RoleChoices.choices)
+    role = models.CharField(max_length=16, choices=RoleChoices.choices)
     is_active = models.BooleanField(default=False)
 
     class Meta:

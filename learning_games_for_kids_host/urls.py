@@ -18,21 +18,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from src.backend.words_soup_game.urls import router
-from src.backend.organization.urls import router as org_router
+
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
     SpectacularRedocView
 )
 
+api_include = lambda model_urls: path("api/", include(model_urls))
 
 urlpatterns = [
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path("api/schema", SpectacularAPIView.as_view(), name="schema"),
+    path('api/docs/swagger', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger'),
+    path('api/docs/redoc', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path("admin/", admin.site.urls),
-    path("api/v1/words_soup_game/", include(router.urls)),
-    path("api/v1/organization/", include(org_router.urls)),
-    path("api/v1/accounts/", include("src.backend.accounts.urls")),
+    api_include("src.backend.words_soup_game.urls"),
+    api_include("src.backend.organization.urls"),
+    api_include("src.backend.accounts.urls"),
 ]
