@@ -12,7 +12,7 @@ class AcademicClasses(BaseModel):
     created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="classes_created")
 
     class Meta:
-        order_by = ["-id"]
+        ordering = ["-id"]
         verbose_name = "Student Classes"
         verbose_name_plural = "Student Classes"
 

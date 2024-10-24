@@ -1,4 +1,4 @@
-from membership_serializer import BaseMembershipSerializer
+from .membership_serializer import BaseMembershipSerializer
 from src.backend.accounts.serializers import UserSerializer
 
 class OrganizationMembershipSerializer(BaseMembershipSerializer):

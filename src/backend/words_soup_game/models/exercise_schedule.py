@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from src.backend.core.models import BaseModel
 from src.backend.words_soup_game.models.exercise import Exercise
-from src.backend.organization.models.organization import Organization, AcademicClasses
+from src.backend.organization.models.organization import Organization
+from src.backend.organization.models.academic_classes import AcademicClasses
 
 __all__ = ["ExerciseSchedule"]
 
