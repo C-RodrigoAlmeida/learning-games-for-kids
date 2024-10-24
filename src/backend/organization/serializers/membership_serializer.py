@@ -21,14 +21,3 @@ class MembershipSerializer(BaseMembershipSerializer):
 class MembershipCreateSerializer(BaseMembershipSerializer):
     class Meta(BaseMembershipSerializer.Meta):
         fields = ["organization", "role"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        request = self.context.get("request")
-        if request and request.user.is_authenticated:
-            self.fields["organization"].queryset = Organization.objects.exclude(
-                membership__user=request.user, 
-                membership__is_active=True,
-                membership__deleted_at__isnull=True,
-                deleted_at__isnull=True
-            )

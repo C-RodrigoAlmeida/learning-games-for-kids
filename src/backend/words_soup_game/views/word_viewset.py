@@ -7,3 +7,6 @@ __all__ = ["WordViewSet"]
 class WordViewSet(viewsets.ModelViewSet):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(name=self.request.data['name'].capitalize())
