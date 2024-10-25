@@ -1,13 +1,18 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-class UserSerializer(serializers.ModelSerializer):
+all = ["BaseUserSerializer, UserSerializer"]
+
+class BaseUSerSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
-        extra_kwargs = {
-            'password': {'write_only': True},
-        }
+        fields = ["username", "password"]
+        extra_kwargs = {'password': {'write_only': True}}
+
+class UserSerializer(BaseUSerSerializer):
+    class Meta(BaseUSerSerializer.Meta):
+        fields = BaseUSerSerializer.Meta.fields + ['id', 'email']
+
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)

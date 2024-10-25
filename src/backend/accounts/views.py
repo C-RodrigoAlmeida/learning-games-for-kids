@@ -3,13 +3,17 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import UserSerializer
+from .serializers import BaseUSerSerializer, UserSerializer
 
 class UserViewSet(viewsets.ViewSet):
     """
     A ViewSet for handling user registration, login, and logout using sessions.
     """
-    serializer_class = UserSerializer
+    def get_serializer_class(self) -> BaseUSerSerializer | UserSerializer:
+        if self.action == "login":
+            return BaseUSerSerializer
+
+        return UserSerializer
 
     def create(self, request):
         """Handle user registration"""
