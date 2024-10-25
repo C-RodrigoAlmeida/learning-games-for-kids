@@ -13,8 +13,8 @@ class AcademicClasses(BaseModel):
 
     class Meta:
         ordering = ["-id"]
-        verbose_name = "Student Classes"
-        verbose_name_plural = "Student Classes"
+        verbose_name = "Academic Classes"
+        verbose_name_plural = "Academic Classes"
 
     def __str__(self) -> str:
         return f"Teacher: {self.teacher} | Organization: {self.organization} | Created By: {self.created_by}"
