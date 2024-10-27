@@ -6,6 +6,7 @@ from src.backend.organization.models.organization import Organization
 __all__ = ["AcademicClasses"]
 
 class AcademicClasses(BaseModel):
+    name = models.CharField(max_length=255)
     teacher = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="teacher_classes")
     students = models.ManyToManyField(get_user_model(), related_name="student_classes")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="student_classes")
