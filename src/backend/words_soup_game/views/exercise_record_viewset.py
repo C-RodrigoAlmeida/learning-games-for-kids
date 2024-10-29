@@ -12,5 +12,5 @@ class ExerciseRecordViewSet(viewsets.ModelViewSet):
         return BaseExerciseRecordSerializer
 
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        serializer.save(student=self.request.user)
 

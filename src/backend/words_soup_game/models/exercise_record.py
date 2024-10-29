@@ -11,7 +11,7 @@ __all__ = ["ExerciseRecord"]
 
 
 class ExerciseRecord(BaseModel):
-    selected_words = models.ManyToManyField(Word, on_delete=models.CASCADE, related_name="exercise_record")
+    selected_words = models.ManyToManyField(Word, related_name="exercise_record")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name="exercise_record")
     student = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="exercise_record")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="exercise_record")

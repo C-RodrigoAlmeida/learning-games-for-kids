@@ -12,4 +12,4 @@ class BaseExerciseRecordSerializer(BaseSerializer):
 
 class ExerciseRecordSerializer(BaseExerciseRecordSerializer):
     class Meta(BaseExerciseRecordSerializer.Meta):
-        fields = BaseExerciseRecordSerializer.Meta.fields + ["created_by"]
+        fields = BaseExerciseRecordSerializer.Meta.fields + ["student"]

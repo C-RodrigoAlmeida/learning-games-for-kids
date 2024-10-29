@@ -1,14 +1,15 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
+
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
 from .serializers import BaseUSerSerializer, UserSerializer
 
 class UserViewSet(viewsets.ViewSet):
-    """
-    A ViewSet for handling user registration, login, and logout using sessions.
-    """
     def get_serializer_class(self) -> BaseUSerSerializer | UserSerializer:
         if self.action == "login":
             return BaseUSerSerializer
@@ -23,6 +24,7 @@ class UserViewSet(viewsets.ViewSet):
             return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @method_decorator(ensure_csrf_cookie)
     @action(detail=False, methods=['post'], permission_classes=[AllowAny])
     def login(self, request):
         """Handle session-based user login"""
