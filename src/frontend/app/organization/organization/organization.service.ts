@@ -8,7 +8,7 @@ import { Organization } from './organization.model';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class OrganizationService extends BaseService {
     page: any;
     rows: any;
     search = '';

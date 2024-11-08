@@ -8,7 +8,7 @@ import { AcademicClass } from './academic-class.model';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class AcademicClassService extends BaseService {
     page: any;
     rows: any;
     search = '';

@@ -1,14 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { BaseService } from 'src/frontend/app/core/services/base.service';
+
 import { ExerciseSchedule } from './exercise-schedule.model';
+import { BaseService } from 'src/frontend/app/core/services/base.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class ExerciseScheduleService extends BaseService {
     page: any;
     rows: any;
     search = '';

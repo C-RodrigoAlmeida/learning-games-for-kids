@@ -8,7 +8,7 @@ import { ExerciseRecord } from './exercise-record.model';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class ExerciseRecordService extends BaseService {
     page: any;
     rows: any;
     search = '';

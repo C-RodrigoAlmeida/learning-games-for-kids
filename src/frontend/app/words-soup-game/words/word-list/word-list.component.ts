@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Word } from '../words.model';
+import { WordService } from '../words.service';
 import { TableHeader } from 'src/frontend/app/core/models/table-header.model'
 import { TableComponent } from 'src/frontend/app/shared/components/table/table.component';
-import { WordService } from '../words.service';
 
 @Component({
   selector: 'app-word-list',

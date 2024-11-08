@@ -8,7 +8,7 @@ import { Membership } from './membership.model';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class MembershipService extends BaseService {
     page: any;
     rows: any;
     search = '';
