@@ -19,3 +19,7 @@ class BaseExerciseScheduleSerializer(BaseSerializer):
 class ExerciseScheduleSerializer(BaseExerciseScheduleSerializer):
     class Meta(BaseExerciseScheduleSerializer.Meta):
         fields = BaseExerciseScheduleSerializer.Meta.fields + ["created_by"]
+
+class ExerciseScheduleDisplaySerializer(BaseExerciseScheduleSerializer):
+    class Meta(BaseExerciseScheduleSerializer.Meta):
+        fields = ["id", "created_at", "deadline"]

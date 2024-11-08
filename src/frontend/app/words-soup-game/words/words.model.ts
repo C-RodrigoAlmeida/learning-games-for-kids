@@ -1,4 +1,4 @@
-export interface Exercise {
+export interface Word {
     id: number,
     name: string
 }
