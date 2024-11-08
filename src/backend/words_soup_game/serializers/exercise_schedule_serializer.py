@@ -12,4 +12,4 @@ class BaseExerciseScheduleSerializer(BaseSerializer):
 
 class ExerciseScheduleSerializer(BaseExerciseScheduleSerializer):
     class Meta(BaseExerciseScheduleSerializer.Meta):
-        fields = BaseSerializer.Meta.fields + ["created_by"]
+        fields = BaseExerciseScheduleSerializer.Meta.fields + ["created_by"]
