@@ -4,8 +4,16 @@ from src.backend.core.serializers import BaseSerializer
 
 __all__ = ["OrganizationSerializer"]
 
-class OrganizationSerializer(BaseSerializer):
+class BaseOrganizationSerializer(BaseSerializer):
 
     class Meta(BaseSerializer.Meta):
         model = Organization
         fields = BaseSerializer.Meta.fields + ["name", "description"]
+
+class OrganizationSerializer(BaseOrganizationSerializer):
+    class Meta(BaseOrganizationSerializer.Meta):
+        fields = BaseOrganizationSerializer.Meta.fields
+
+class OrganizationDisplaySerializer(BaseOrganizationSerializer):
+    class Meta(BaseOrganizationSerializer.Meta):
+        fields = ["id", "name"]

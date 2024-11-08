@@ -35,3 +35,7 @@ class UserSerializer(BaseUSerSerializer):
 
         instance.save()
         return instance
+    
+class UserDisplaySerializer(BaseUSerSerializer):
+    class Meta(BaseUSerSerializer.Meta):
+        fields = ['id', 'first_name', 'last_name', 'email']

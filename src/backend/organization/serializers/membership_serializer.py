@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
 from src.backend.core.serializers import BaseSerializer
-from src.backend.accounts.serializers import UserSerializer
-from src.backend.organization.serializers.organization_serializer import OrganizationSerializer
-from src.backend.organization.models import Membership, Organization
+from src.backend.accounts.serializers import UserDisplaySerializer
+from src.backend.organization.serializers.organization_serializer import OrganizationDisplaySerializer
+from src.backend.organization.models import Membership
 
 __all__ = ["MembershipSerializer", "MembershipCreateSerializer"]
 
@@ -13,8 +13,8 @@ class BaseMembershipSerializer(BaseSerializer):
         fields = BaseSerializer.Meta.fields + ["role", "is_active"]
 
 class MembershipSerializer(BaseMembershipSerializer):
-    user = UserSerializer()
-    organization = OrganizationSerializer()
+    user = UserDisplaySerializer()
+    organization = OrganizationDisplaySerializer()
     class Meta(BaseMembershipSerializer.Meta):
         fields = BaseMembershipSerializer.Meta.fields + ["user", "organization"]
 
