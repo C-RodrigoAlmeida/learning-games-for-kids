@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "learning_games_for_kids_host.urls"
+ROOT_URLCONF = "django_settings.urls"
 
 TEMPLATES = [
     {
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "learning_games_for_kids_host.wsgi.application"
+WSGI_APPLICATION = "django_settings.wsgi.application"
 
 
 # Database
