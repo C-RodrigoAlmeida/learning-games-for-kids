@@ -27,8 +27,7 @@ export class OrganizationService extends BaseService {
 
     getOrganizations(): Observable<Organization[]> {
         return this.http.get<Organization[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 
