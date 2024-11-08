@@ -27,8 +27,7 @@ export class AcademicClassService extends BaseService {
 
     getAcademicClasses(): Observable<AcademicClass[]> {
         return this.http.get<AcademicClass[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 
