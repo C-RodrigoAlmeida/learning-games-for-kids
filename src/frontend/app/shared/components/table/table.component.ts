@@ -12,4 +12,9 @@ import { TableHeader } from 'src/frontend/app/core/models/table-header.model';
 export class TableComponent<T> {
   @Input() headers: TableHeader<T>[] = [];
   @Input() rows: T[] = [];
+
+  getNestedProperty(obj: any, path: string | number | symbol): string {
+    if (typeof path !== 'string') return '';
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+  }
 }

@@ -14,7 +14,7 @@ export class ExerciseScheduleService extends BaseService {
     page: any;
     rows: any;
     search = '';
-    endpointName = '/exercise_schedule/';
+    endpointName = '/exercise_schedules/';
 
     constructor(private http: HttpClient) {
         super();
@@ -29,8 +29,7 @@ export class ExerciseScheduleService extends BaseService {
 
     getExerciseSchedules(): Observable<ExerciseSchedule[]> {
         return this.http.get<ExerciseSchedule[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 

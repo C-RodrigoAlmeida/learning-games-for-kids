@@ -10,7 +10,7 @@ __all__ = ["ExerciseSchedule"]
 
 
 class ExerciseSchedule(BaseModel):
-    academic_classes = models.ForeignKey(AcademicClasses, on_delete=models.CASCADE, related_name="exercise_schedule")
+    academic_class = models.ForeignKey(AcademicClasses, on_delete=models.CASCADE, related_name="exercise_schedule")
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name="exercise_schedule")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="exercise_schedule")
     deadline = models.DateTimeField()

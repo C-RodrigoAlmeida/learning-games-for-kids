@@ -3,6 +3,7 @@ from src.backend.words_soup_game.models import ExerciseSchedule
 from src.backend.accounts.serializers import UserDisplaySerializer
 from src.backend.words_soup_game.serializers.exercise_serializer import ExerciseDisplaySerializer
 from src.backend.organization.serializers.organization_serializer import OrganizationDisplaySerializer
+from src.backend.organization.serializers.academic_classes_serializer import AcademicClassDisplaySerializer
 
 __all__ = ["BaseExerciseScheduleSerializer", "ExerciseScheduleSerializer"]
 
@@ -11,9 +12,10 @@ class BaseExerciseScheduleSerializer(BaseSerializer):
     exercise = ExerciseDisplaySerializer()
     organization = OrganizationDisplaySerializer()
     created_by = UserDisplaySerializer()
+    academic_class = AcademicClassDisplaySerializer()
     class Meta(BaseSerializer.Meta):
         model = ExerciseSchedule
-        fields = BaseSerializer.Meta.fields + ["exercise", "deadline", "organization"]
+        fields = BaseSerializer.Meta.fields + ["academic_class", "exercise", "deadline", "organization"]
 
 
 class ExerciseScheduleSerializer(BaseExerciseScheduleSerializer):

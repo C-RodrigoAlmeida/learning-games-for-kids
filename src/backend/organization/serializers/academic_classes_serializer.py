@@ -6,14 +6,18 @@ from src.backend.accounts.serializers import UserDisplaySerializer
 __all__ = ["BaseAcademicClassesSerializer", "AcademicClassesSerializer"]
 
 class BaseAcademicClassesSerializer(BaseSerializer):
-    class Meta(BaseSerializer.Meta):
-        model = AcademicClasses
-        fields = BaseSerializer.Meta.fields + ["teacher", "students", "organization"]
-
-class AcademicClassesSerializer(BaseAcademicClassesSerializer):
     organization = OrganizationDisplaySerializer()
     students = UserDisplaySerializer(many=True)
     teacher = UserDisplaySerializer()
-    created_by = UserDisplaySerializer()
+
+    class Meta(BaseSerializer.Meta):
+        model = AcademicClasses
+        fields = BaseSerializer.Meta.fields + ["name", "teacher", "students", "organization"]
+
+class AcademicClassesSerializer(BaseAcademicClassesSerializer):
     class Meta(BaseAcademicClassesSerializer.Meta):
-        fields = BaseAcademicClassesSerializer.Meta.fields + ["created_by"]
+        fields = BaseAcademicClassesSerializer.Meta.fields
+
+class AcademicClassDisplaySerializer(BaseAcademicClassesSerializer):
+    class Meta(BaseAcademicClassesSerializer.Meta):
+        fields = ['id', "name", "teacher"]
