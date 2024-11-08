@@ -8,11 +8,11 @@ import { Exercise } from './exercise.model';
 @Injectable({
     providedIn: 'root',
 })
-export class AccountService extends BaseService {
+export class ExerciseService extends BaseService {
     page: any;
     rows: any;
     search = '';
-    endpointName = '/exercise/';
+    endpointName = '/exercises/';
 
     constructor(private http: HttpClient) {
         super();
@@ -27,8 +27,7 @@ export class AccountService extends BaseService {
 
     getExercises(): Observable<Exercise[]> {
         return this.http.get<Exercise[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 

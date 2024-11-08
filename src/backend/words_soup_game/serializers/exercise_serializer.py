@@ -9,14 +9,9 @@ class ExerciseSerializer(BaseSerializer):
     correct_word = WordDisplaySerializer()
     wrong_words = WordDisplaySerializer(many=True)
     organization = OrganizationDisplaySerializer()
-    class Meta:
+    class Meta(BaseSerializer.Meta):
         model = Exercise
-        fields = [
-            "wrong_words",
-            "correct_word",
-            "is_public",
-            "organization"
-        ]
+        fields = BaseSerializer.Meta.fields + ["wrong_words", "correct_word", "is_public", "organization"]
 
 class ExerciseDisplaySerializer(ExerciseSerializer):
     class Meta(ExerciseSerializer.Meta):
