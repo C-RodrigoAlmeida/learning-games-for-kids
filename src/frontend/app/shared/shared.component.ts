@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -17,9 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 
-@Component({
-  standalone: true,
-  template: '<router-outlet></router-outlet>',
+@NgModule({
   imports: [
     CommonModule,
     ButtonModule,

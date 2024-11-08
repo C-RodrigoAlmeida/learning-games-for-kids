@@ -1,14 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { FormBaseComponent } from 'src/frontend/app/base-components/form-base.component';
-import { User } from 'src/frontend/app/models/user.model';
+import { User, UserLoginForm } from 'src/frontend/app/models/user.model';
 import { RetornosComponent } from 'src/frontend/app/retornos/retornos.component';
 import { LocalStorageUtils } from 'src/frontend/app/utils/localstorage';
 import { AccountService } from '../services/account.service';
 import { SharedComponent } from 'src/frontend/app/shared/shared.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,8 +19,11 @@ import { CommonModule } from '@angular/common';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     imports: [
-        // CommonModule,
-        SharedComponent
+        CommonModule,
+        SharedComponent,
+        ReactiveFormsModule,
+        InputTextModule,
+        FloatLabelModule
     ],
     providers: [
         ConfirmationService,
@@ -28,13 +33,15 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent extends FormBaseComponent implements OnInit {
     @ViewChildren(FormControlName, { read: ElementRef })
+    localStorageUtils = new LocalStorageUtils();
     formInputElements: ElementRef[];
     errors: any[] = [];
     loginForm: FormGroup;
     user: User;
-    json: any;
     returnUrl: string;
-    localStorageUtils = new LocalStorageUtils();
+
+    userLogin: UserLoginForm;
+
     constructor(
         private fb: FormBuilder,
         private router: Router,
@@ -47,8 +54,8 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
         super();
 
         this.validationMessages = {
-            username: {
-                required: 'Informe o usuário',
+            email: {
+                required: 'Informe o email',
             },
             password: {
                 required: 'Informe a senha',
@@ -62,11 +69,9 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('LOGIN')
-
         this.loginForm = this.fb.group({
-            username: ['', [Validators.required]],
-            password: ['', [Validators.required]],
+            email: [this.userLogin.Email, [Validators.required]],
+            password: [this.userLogin.Password, [Validators.required]]
         });
     }
 

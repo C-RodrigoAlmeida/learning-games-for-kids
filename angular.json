@@ -27,7 +27,8 @@
               }
             ],
             "styles": [
-              "src/frontend/styles.css"
+                "./node_modules/primeng/resources/themes/lara-dark-green/theme.css",
+                "src/frontend/styles.css"
             ],
             "scripts": []
           },

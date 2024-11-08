@@ -3,3 +3,8 @@ export class User {
     Username: string
     Email: string
 }
+
+export class UserLoginForm {
+    Email: string
+    Password: string
+}

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
     standalone: true,
@@ -15,11 +16,12 @@ export class AppComponent implements OnInit {
     title = 'front_learning-game-for-kids';
 
     constructor(
+        private primengConfig: PrimeNGConfig,
         public router?: Router
     ) { }
 
     ngOnInit(): void {
-        // this.router?.navigateByUrl('/home', { skipLocationChange: false })
+        this.primengConfig.ripple = true;
         console.log('appComponent')
     }
 }
