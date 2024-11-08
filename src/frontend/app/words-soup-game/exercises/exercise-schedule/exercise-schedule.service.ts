@@ -22,7 +22,7 @@ export class AccountService extends BaseService {
         return this.http.get<ExerciseSchedule>(
             this.UrlServiceV1 + this.endpointName + id,
             super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError))
+        ).pipe(catchError(super.serviceError));
     }
 
     getExerciseSchedules(): Observable<ExerciseSchedule[]> {
@@ -37,7 +37,7 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName,
             exerciseSchedule,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     updateExerciseSchedule(exerciseSchedule: ExerciseSchedule): Observable<ExerciseSchedule> {
@@ -45,13 +45,13 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName + exerciseSchedule.id,
             exerciseSchedule,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     deleteExerciseSchedule(id: number): Observable<ExerciseSchedule> {
         return this.http.delete<ExerciseSchedule>(
             this.UrlServiceV1 + this.endpointName + id,
             this.ObterAuthHeaderJson()
-        )
+        ).pipe(catchError(super.serviceError));
     }
 }

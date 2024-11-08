@@ -22,7 +22,7 @@ export class AccountService extends BaseService {
         return this.http.get<AcademicClass>(
             this.UrlServiceV1 + this.endpointName + id,
             super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError))
+        ).pipe(catchError(super.serviceError));
     }
 
     getAcademicClasses(): Observable<AcademicClass[]> {
@@ -37,7 +37,7 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName,
             academicClass,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     updateAcademicClass(academicClass: AcademicClass): Observable<AcademicClass> {
@@ -45,13 +45,13 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName + academicClass.id,
             academicClass,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     deleteAcademicClass(id: number): Observable<AcademicClass> {
         return this.http.delete<AcademicClass>(
             this.UrlServiceV1 + this.endpointName + id,
             this.ObterAuthHeaderJson()
-        )
+        ).pipe(catchError(super.serviceError));
     }
 }

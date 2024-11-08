@@ -22,7 +22,7 @@ export class AccountService extends BaseService {
         return this.http.get<ExerciseRecord>(
             this.UrlServiceV1 + this.endpointName + id,
             super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError))
+        ).pipe(catchError(super.serviceError));
     }
 
     getExerciseRecords(): Observable<ExerciseRecord[]> {
@@ -37,7 +37,7 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName,
             exerciseRecord,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     updateExerciseRecord(exerciseRecord: ExerciseRecord): Observable<ExerciseRecord> {
@@ -45,13 +45,13 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName + exerciseRecord.id,
             exerciseRecord,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     deleteExerciseRecord(id: number): Observable<ExerciseRecord> {
         return this.http.delete<ExerciseRecord>(
             this.UrlServiceV1 + this.endpointName + id,
             this.ObterAuthHeaderJson()
-        )
+        ).pipe(catchError(super.serviceError));
     }
 }

@@ -22,7 +22,7 @@ export class AccountService extends BaseService {
         return this.http.get<Organization>(
             this.UrlServiceV1 + this.endpointName + id,
             super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError))
+        ).pipe(catchError(super.serviceError));
     }
 
     getOrganizations(): Observable<Organization[]> {
@@ -37,7 +37,7 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName,
             organization,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     updateOrganization(organization: Organization): Observable<Organization> {
@@ -45,13 +45,13 @@ export class AccountService extends BaseService {
             this.UrlServiceV1 + this.endpointName + organization.id,
             organization,
             this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError))
+        ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
     deleteOrganization(id: number): Observable<Organization> {
         return this.http.delete<Organization>(
             this.UrlServiceV1 + this.endpointName + id,
             this.ObterAuthHeaderJson()
-        )
+        ).pipe(catchError(super.serviceError));
     }
 }
