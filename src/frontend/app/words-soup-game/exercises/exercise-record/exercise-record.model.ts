@@ -1,7 +1,6 @@
-export interface ExerciseRecord {
-    id: number,
-    created_at: Date,
-    updated_at: Date,
+import { BaseModel } from "../../../core/models/base.model";
+
+export interface ExerciseRecord extends BaseModel{
     exercise: number,
     organization: number,
     schedule: number,

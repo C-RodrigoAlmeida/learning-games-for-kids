@@ -1,7 +1,6 @@
-export interface ExerciseSchedule {
-    id: number,
-    created_at: Date,
-    updated_at: Date,
+import { BaseModel } from "../../../core/models/base.model";
+
+export interface ExerciseSchedule extends BaseModel {
     exercise: number,
     deadline: Date,
     organization: number,
