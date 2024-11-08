@@ -25,7 +25,7 @@ export class AccountService extends BaseService {
         ).pipe(catchError(super.serviceError))
     }
 
-    gets(): Observable<ExerciseSchedule[]> {
+    getExerciseSchedules(): Observable<ExerciseSchedule[]> {
         return this.http.get<ExerciseSchedule[]>(
             this.UrlServiceV1 + this.endpointName,
             super.ObterAuthHeaderJson()

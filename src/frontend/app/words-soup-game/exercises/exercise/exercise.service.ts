@@ -25,7 +25,7 @@ export class AccountService extends BaseService {
         ).pipe(catchError(super.serviceError))
     }
 
-    gets(): Observable<Exercise[]> {
+    getExercises(): Observable<Exercise[]> {
         return this.http.get<Exercise[]>(
             this.UrlServiceV1 + this.endpointName,
             super.ObterAuthHeaderJson()
