@@ -7,7 +7,7 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE", "learning_games_for_kids_host.settings"
+        "DJANGO_SETTINGS_MODULE", "django_settings.settings"
     )
     try:
         from django.core.management import execute_from_command_line
