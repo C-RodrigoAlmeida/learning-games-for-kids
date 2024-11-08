@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { LocalStorageUtils } from 'src/frontend/app/utils/localstorage';
+import { LocalStorageUtils } from 'src/frontend/app/shared/utils/localstorage';
 
 @Injectable()
 export class BaseGuard implements CanActivate {

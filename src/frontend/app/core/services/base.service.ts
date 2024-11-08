@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from 'src/frontend/environments/environment';
-import { LocalStorageUtils } from '../utils/localstorage';
+import { LocalStorageUtils } from 'src/frontend/app/shared/utils/localstorage';
 
 export abstract class BaseService {
     protected UrlServiceV1: string = environment.apiUrlv1;
