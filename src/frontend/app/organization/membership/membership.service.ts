@@ -27,8 +27,7 @@ export class MembershipService extends BaseService {
 
     getMemberships(): Observable<Membership[]> {
         return this.http.get<Membership[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 

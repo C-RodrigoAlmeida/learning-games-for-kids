@@ -1,11 +1,13 @@
-import { LoginComponent } from "./accounts/login/login.component";
-import { AppComponent } from "./app.component";
 import { Routes } from "@angular/router";
+
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./accounts/login/login.component";
 import { WordListComponent } from "./words-soup-game/words/word-list/word-list.component";
-import { ExerciseScheduleListComponent } from "./words-soup-game/exercises/exercise-schedule/exercise-schedule-list/exercise-schedule-list.component";
-import { ExerciseRecordListComponent } from "./words-soup-game/exercises/exercise-record/exercise-record-list/exercise-record-list.component";
+import { MembershipListComponent } from "./organization/membership/membership-list/membership-list.component";
 import { ExerciseListComponent } from "./words-soup-game/exercises/exercise/exercise-list/exercise-list.component";
 import { OrganizationListComponent } from "./organization/organization/organization-list/organization-list.component";
+import { ExerciseRecordListComponent } from "./words-soup-game/exercises/exercise-record/exercise-record-list/exercise-record-list.component";
+import { ExerciseScheduleListComponent } from "./words-soup-game/exercises/exercise-schedule/exercise-schedule-list/exercise-schedule-list.component";
 
 export const routes: Routes = [
     {
@@ -17,6 +19,7 @@ export const routes: Routes = [
         loadComponent: () => import('./nav/home/home.component')
             .then(m => m.HomeComponent)
     },
+    // TODOS ESTES ABAIXO SÃO PARA TESTES, DEPOIS REMOVER:
     {
         path: 'words',  
         component: WordListComponent
@@ -36,6 +39,10 @@ export const routes: Routes = [
     {
         path: 'organizations',
         component: OrganizationListComponent
+    },
+    {
+        path: 'memberships',
+        component: MembershipListComponent
     },
     // {
     //     path: 'account',
