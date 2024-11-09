@@ -3,7 +3,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 
 import { fromEvent, merge, Observable } from 'rxjs';
 
-import { DisplayMessage, GenericValidator, ValidationMessages } from '../../utils/generic-form-validation'
+import { DisplayMessage, GenericValidator, ValidationMessages } from '../utils/generic-form-validation'
 
 export abstract class FormBaseComponent {
 

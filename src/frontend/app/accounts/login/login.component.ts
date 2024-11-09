@@ -3,7 +3,7 @@ import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validator
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
-import { FormBaseComponent } from 'src/frontend/app/shared/components/form/form-base.component';
+import { FormBaseComponent } from 'src/frontend/app/shared/components/form-base.component';
 import { User, UserLoginForm } from 'src/frontend/app/accounts/user.model';
 import { RetornosComponent } from 'src/frontend/app/shared/components/retornos/retornos.component';
 import { LocalStorageUtils } from 'src/frontend/app/shared/utils/localstorage';

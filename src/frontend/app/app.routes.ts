@@ -9,7 +9,6 @@ import { OrganizationListComponent } from "./organization/organization/organizat
 import { AcademicClassesListComponent } from "./organization/academic-classes/academic-classes-list/academic-classes-list.component";
 import { ExerciseRecordListComponent } from "./words-soup-game/exercises/exercise-record/exercise-record-list/exercise-record-list.component";
 import { ExerciseScheduleListComponent } from "./words-soup-game/exercises/exercise-schedule/exercise-schedule-list/exercise-schedule-list.component";
-
 export const routes: Routes = [
     {
         path: '',
@@ -49,6 +48,7 @@ export const routes: Routes = [
         path: 'academic-classes',
         component: AcademicClassesListComponent
     },
+ 
     // {
     //     path: 'account',
     //     loadChildren: () => import('./accounts/login/login.component')
