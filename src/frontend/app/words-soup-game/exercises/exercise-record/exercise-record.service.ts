@@ -12,7 +12,7 @@ export class ExerciseRecordService extends BaseService {
     page: any;
     rows: any;
     search = '';
-    endpointName = '/exercise_record/';
+    endpointName = '/exercise_records/';
 
     constructor(private http: HttpClient) {
         super();
@@ -27,8 +27,7 @@ export class ExerciseRecordService extends BaseService {
 
     getExerciseRecords(): Observable<ExerciseRecord[]> {
         return this.http.get<ExerciseRecord[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 

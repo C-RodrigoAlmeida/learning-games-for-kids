@@ -23,5 +23,5 @@ class ExerciseRecord(BaseModel):
         verbose_name_plural = "Exercises Records"
 
     def __str__(self) -> str:
-        return f"Exercise: {self.exercise} | Organization: {self.organization} | Created By: {self.created_by}"
+        return f"Exercise: {self.exercise} | Organization: {self.organization} | Student: {self.student}"
     

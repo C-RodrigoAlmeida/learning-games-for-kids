@@ -3,6 +3,7 @@ import { AppComponent } from "./app.component";
 import { Routes } from "@angular/router";
 import { WordListComponent } from "./words-soup-game/words/word-list/word-list.component";
 import { ExerciseScheduleListComponent } from "./words-soup-game/exercises/exercise-schedule/exercise-schedule-list/exercise-schedule-list.component";
+import { ExerciseRecordListComponent } from "./words-soup-game/exercises/exercise-record/exercise-record-list/exercise-record-list.component";
 
 export const routes: Routes = [
     {
@@ -21,6 +22,10 @@ export const routes: Routes = [
     {
         path: 'exercise-schedules',
         component: ExerciseScheduleListComponent
+    },
+    {
+        path: 'exercise-records',
+        component: ExerciseRecordListComponent
     },
     // {
     //     path: 'account',
