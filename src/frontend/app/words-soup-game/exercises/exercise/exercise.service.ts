@@ -17,7 +17,15 @@ export class ExerciseService extends BaseService {
     constructor(private http: HttpClient) {
         super();
     }
-
+    
+    createExercise(exercise: Exercise): Observable<Exercise> {
+        return this.http.post<Exercise>(
+            this.UrlServiceV1 + this.endpointName,
+            exercise,
+            this.ObterAuthHeaderJson()
+        ).pipe(map(this.extractData), catchError(this.serviceError));
+    }
+    
     getExercise(id: number): Observable<Exercise> {
         return this.http.get<Exercise>(
             this.UrlServiceV1 + this.endpointName + id,
@@ -31,13 +39,6 @@ export class ExerciseService extends BaseService {
         ).pipe(catchError(super.serviceError));
     }
 
-    createExercise(exercise: Exercise): Observable<Exercise> {
-        return this.http.post<Exercise>(
-            this.UrlServiceV1 + this.endpointName,
-            exercise,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
-    }
 
     updateExercise(exercise: Exercise): Observable<Exercise> {
         return this.http.put<Exercise>(

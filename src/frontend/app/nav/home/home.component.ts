@@ -9,6 +9,6 @@ import { HomeRouting } from "../home.routes";
 })
 export class HomeComponent implements OnInit {
     ngOnInit() {
-        console.log("Home")
+        console.log("Home");
     }
 }

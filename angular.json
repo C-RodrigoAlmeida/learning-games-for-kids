@@ -27,9 +27,11 @@
               }
             ],
             "styles": [
-                "./node_modules/primeng/resources/themes/lara-dark-green/theme.css",
-                "src/frontend/styles.css"
+              "src/frontend/styles.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            }, 
             "scripts": []
           },
           "configurations": {
@@ -88,6 +90,9 @@
             "styles": [
               "src/frontend/styles.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
             "scripts": []
           }
         }
