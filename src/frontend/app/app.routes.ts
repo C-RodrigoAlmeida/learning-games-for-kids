@@ -9,6 +9,7 @@ import { OrganizationListComponent } from "./organization/organization/organizat
 import { AcademicClassesListComponent } from "./organization/academic-classes/academic-classes-list/academic-classes-list.component";
 import { ExerciseRecordListComponent } from "./words-soup-game/exercises/exercise-record/exercise-record-list/exercise-record-list.component";
 import { ExerciseScheduleListComponent } from "./words-soup-game/exercises/exercise-schedule/exercise-schedule-list/exercise-schedule-list.component";
+import { WordFormComponent } from "./words-soup-game/words/word-form/word-form.component";
 export const routes: Routes = [
     {
         path: '',
@@ -20,6 +21,14 @@ export const routes: Routes = [
             .then(m => m.HomeComponent)
     },
     // TODOS ESTES ABAIXO SÃO PARA TESTES, DEPOIS REMOVER:
+    {
+        path: 'word',
+        component: WordFormComponent
+    },
+    {
+        path: 'word/:id',
+        component: WordFormComponent
+    },
     {
         path: 'words',  
         component: WordListComponent

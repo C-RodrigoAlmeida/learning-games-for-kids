@@ -26,24 +26,21 @@ export class WordService extends BaseService {
 
     getWords(): Observable<Word[]> {
         return this.http.get<Word[]>(
-            this.UrlServiceV1 + this.endpointName,
-            super.ObterHeaderJson()
+            this.UrlServiceV1 + this.endpointName
         ).pipe(catchError(super.serviceError));
     }
 
     createWord(word: Word): Observable<Word> {
         return this.http.post<Word>(
             this.UrlServiceV1 + this.endpointName,
-            word,
-            this.ObterAuthHeaderJson()
+            word
         ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
-    updateWord(word: Word): Observable<Word> {
+    updateWord(id: number, word: Word): Observable<Word> {
         return this.http.put<Word>(
-            this.UrlServiceV1 + this.endpointName + word.id,
-            word,
-            this.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName + id + '/',
+            word
         ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 

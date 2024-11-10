@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let field of fields">
+      <label [for]="field.name">{{ field.label }}</label>
+      <input
+        *ngIf="field.type !== 'textarea'"
+        [id]="field.name"
+        [type]="field.type"
+        [formControlName]="field.name"
+        [value]="field.value"
+      />
+      <textarea *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name"></textarea>
+  
+      <div *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+        <div *ngFor="let validation of field.validations">
+          <div *ngIf="form.get(field.name)?.hasError(validation.name)">
+            {{ validation.message }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+  
