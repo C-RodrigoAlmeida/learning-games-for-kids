@@ -39,11 +39,10 @@ export class ExerciseService extends BaseService {
         ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 
-    updateExercise(exercise: Exercise): Observable<Exercise> {
+    updateExercise(id: number, exercise: Exercise): Observable<Exercise> {
         return this.http.put<Exercise>(
-            this.UrlServiceV1 + this.endpointName + exercise.id,
-            exercise,
-            this.ObterAuthHeaderJson()
+            this.UrlServiceV1 + this.endpointName + id + '/',
+            exercise
         ).pipe(map(this.extractData), catchError(this.serviceError));
     }
 

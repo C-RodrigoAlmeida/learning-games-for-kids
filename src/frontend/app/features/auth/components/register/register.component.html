@@ -1,0 +1,103 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2>Register</h2>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="form-group">
+        <label for="username">Username*</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          [class.is-invalid]="username?.invalid && (username?.dirty || username?.touched)"
+        >
+        <div class="error-message" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+          <span *ngIf="username?.errors?.['required']">Username is required</span>
+          <span *ngIf="username?.errors?.['minlength']">Username must be at least 3 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+        >
+        <div class="error-message" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <span *ngIf="email?.errors?.['required']">Email is required</span>
+          <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">First Name*</label>
+          <input
+            type="text"
+            id="first_name"
+            formControlName="first_name"
+            class="form-control"
+            [class.is-invalid]="first_name?.invalid && (first_name?.dirty || first_name?.touched)"
+          >
+          <div class="error-message" *ngIf="first_name?.invalid && (first_name?.dirty || first_name?.touched)">
+            <span *ngIf="first_name?.errors?.['required']">First name is required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Last Name*</label>
+          <input
+            type="text"
+            id="last_name"
+            formControlName="last_name"
+            class="form-control"
+            [class.is-invalid]="last_name?.invalid && (last_name?.dirty || last_name?.touched)"
+          >
+          <div class="error-message" *ngIf="last_name?.invalid && (last_name?.dirty || last_name?.touched)">
+            <span *ngIf="last_name?.errors?.['required']">Last name is required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password*</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched)"
+        >
+        <div class="error-message" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <span *ngIf="password?.errors?.['required']">Password is required</span>
+          <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password*</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          [class.is-invalid]="registerForm.errors?.['mismatch']"
+        >
+        <div class="error-message" *ngIf="registerForm.errors?.['mismatch']">
+          Passwords do not match
+        </div>
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid || isLoading" class="submit-button">
+        {{ isLoading ? 'Registering...' : 'Register' }}
+      </button>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</div> 

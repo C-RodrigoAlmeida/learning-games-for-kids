@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +28,31 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# CORS
+CORS_ALLOW_ALL_ORIGINS = environ.get("CORS_ALLOW_ALL_ORIGINS", "false").lower() == "true"
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    *environ.get("ALLOWED_ORIGINS_FE", "http://127.0.0.1:4200|http://localhost:4200").split("|"),
+    *environ.get("ALLOWED_ORIGINS_BE", "http://127.0.0.1:8000|http://localhost:8000").split("|"),
+]
+
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_HEADER_NAME = "CSRF_COOKIE"
+CSRF_TRUSTED_ORIGINS = [
+    *environ.get("ALLOWED_ORIGINS_FE", "http://127.0.0.1:4200|http://localhost:4200").split("|"),
+    *environ.get("ALLOWED_ORIGINS_BE", "http://127.0.0.1:8000|http://localhost:8000").split("|"),
+]
+
+SESSION_COOKIE_SECURE = environ.get("SESSION_COOKIE_SECURE", "false").lower() == "true"
+CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
+CSRF_COOKIE_HTTPONLY = False
+if CSRF_COOKIE_SECURE:
+    CSRF_COOKIE_SAMESITE = None
+else:
+    CSRF_COOKIE_SAMESITE = "Lax"
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -38,8 +61,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     
-    "corsheaders",       # For handling CORS
-    "django_filters",     # Corrected name for Django Filters
+    "corsheaders",
+    "django_filters",
 
     "rest_framework",
     "drf_spectacular",
