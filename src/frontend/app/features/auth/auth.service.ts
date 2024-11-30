@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LoginCredentials, AuthResponse } from '../../features/auth/models/auth.model';
-import { ApiService } from './api.service';
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
+import { LoginCredentials, AuthResponse } from './models/auth.model';
 
 @Injectable({
   providedIn: 'root'

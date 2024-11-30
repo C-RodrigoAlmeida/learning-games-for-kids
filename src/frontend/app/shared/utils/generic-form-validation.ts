@@ -1,5 +1,4 @@
 import { FormGroup } from '@angular/forms';
-
 export class GenericValidator {
     constructor(private validationMessages: ValidationMessages) { }
 

@@ -1,11 +1,12 @@
+import { BaseModel } from "src/frontend/app/core/models/base.model";
+
 export interface LoginCredentials {
   username: string;
   password: string;
 }
 
-export interface AuthResponse {
+export interface AuthResponse extends BaseModel {
   user: {
-    id: number;
     username: string;
     email: string;
     first_name: string;
