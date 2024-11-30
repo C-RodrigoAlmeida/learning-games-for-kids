@@ -9,13 +9,13 @@ import { LoginCredentials } from '../../models/auth.model';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
   isLoading: boolean = false;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +40,7 @@ export class LoginComponent {
           this.router.navigate(['/flights']);
         },
         error: (error) => {
-          this.errorMessage = error.error?.message || 'Login failed. Please try again.';
+          this.errorMessage = error.error?.message || 'Algo deu errado. Tente novamente.';
           this.isLoading = false;
         },
         complete: () => {

@@ -8,13 +8,14 @@ import { UserService } from '../../../account/services/user.service';
   selector: 'app-register',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage: string = '';
   isLoading: boolean = false;
+  showPassword = false;
+  showConfirmPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -53,6 +54,10 @@ export class RegisterComponent {
         }
       });
     }
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   get username() { return this.registerForm.get('username'); }
