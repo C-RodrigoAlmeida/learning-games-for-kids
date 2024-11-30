@@ -1,56 +1,34 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { BaseService } from 'src/frontend/app/core/services/base.service';
+import { Injectable } from '@angular/core';
 import { AcademicClass } from './academic-class.model';
+import { ApiService } from '../../core/services/api.service';
+import { PaginatedResponse } from '../../core/models/paginated-response.interface';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AcademicClassService extends BaseService {
-    page: any;
-    rows: any;
-    search = '';
-    endpointName = '/academic_classes/';
+export class AcademicClassService {
+    endpointURL = '/academic_classes/';
 
-    constructor(private http: HttpClient) {
-        super();
-    }
+    constructor(private apiService: ApiService) {}
 
     getAcademicClass(id: number): Observable<AcademicClass> {
-        return this.http.get<AcademicClass>(
-            this.UrlServiceV1 + this.endpointName + id,
-            super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.getOne<AcademicClass>(`${this.endpointURL}${id}`);
     }
 
-    getAcademicClasses(): Observable<AcademicClass[]> {
-        return this.http.get<AcademicClass[]>(
-            this.UrlServiceV1 + this.endpointName
-        ).pipe(catchError(super.serviceError));
+    getAcademicClasses(): Observable<PaginatedResponse<AcademicClass>> {
+        return this.apiService.get<AcademicClass>(this.endpointURL);
     }
 
     createAcademicClass(academicClass: AcademicClass): Observable<AcademicClass> {
-        return this.http.post<AcademicClass>(
-            this.UrlServiceV1 + this.endpointName,
-            academicClass,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.post<AcademicClass>(this.endpointURL, academicClass);
     }
 
     updateAcademicClass(academicClass: AcademicClass): Observable<AcademicClass> {
-        return this.http.put<AcademicClass>(
-            this.UrlServiceV1 + this.endpointName + academicClass.id,
-            academicClass,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.put<AcademicClass>(this.endpointURL, academicClass);
     }
 
     deleteAcademicClass(id: number): Observable<AcademicClass> {
-        return this.http.delete<AcademicClass>(
-            this.UrlServiceV1 + this.endpointName + id,
-            this.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.delete<AcademicClass>(`${this.endpointURL}${id}`);
     }
 }

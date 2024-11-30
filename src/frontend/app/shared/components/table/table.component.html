@@ -1,12 +1,14 @@
-<table>
-  <thead>
-    <tr>
-      <th *ngFor="let header of headers">{{ header.label }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of rows">
-      <td *ngFor="let header of headers">{{ getNestedProperty(row, header.key) }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th *ngFor="let header of headers" class="px-6 py-3" scope="col">{{ header.label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td *ngFor="let header of headers" class="px-6 py-4">{{ getNestedProperty(row, header.key) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

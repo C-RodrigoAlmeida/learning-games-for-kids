@@ -1,58 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-
+import { Injectable } from '@angular/core';
 import { ExerciseSchedule } from './exercise-schedule.model';
-import { BaseService } from 'src/frontend/app/core/services/base.service';
+import { ApiService } from 'src/frontend/app/core/services/api.service';
+import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ExerciseScheduleService extends BaseService {
-    page: any;
-    rows: any;
-    search = '';
-    endpointName = '/exercise_schedules/';
+export class ExerciseScheduleService{
+    endpointURL = '/exercise_schedules/';
 
-    constructor(private http: HttpClient) {
-        super();
-    }
+    constructor(private apiService: ApiService) {}
 
     getExerciseSchedule(id: number): Observable<ExerciseSchedule> {
-        return this.http.get<ExerciseSchedule>(
-            this.UrlServiceV1 + this.endpointName + id,
-            super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.getOne<ExerciseSchedule>(`${this.endpointURL}${id}`);
     }
 
-    getExerciseSchedules(): Observable<ExerciseSchedule[]> {
-        return this.http.get<ExerciseSchedule[]>(
-            this.UrlServiceV1 + this.endpointName
-        ).pipe(catchError(super.serviceError));
+    getExerciseSchedules(): Observable<PaginatedResponse<ExerciseSchedule[]>> {
+        return this.apiService.get<ExerciseSchedule[]>(this.endpointURL);
     }
 
     createExerciseSchedule(exerciseSchedule: ExerciseSchedule): Observable<ExerciseSchedule> {
-        return this.http.post<ExerciseSchedule>(
-            this.UrlServiceV1 + this.endpointName,
-            exerciseSchedule,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.post<ExerciseSchedule>(this.endpointURL, exerciseSchedule);
     }
 
     updateExerciseSchedule(exerciseSchedule: ExerciseSchedule): Observable<ExerciseSchedule> {
-        return this.http.put<ExerciseSchedule>(
-            this.UrlServiceV1 + this.endpointName + exerciseSchedule.id,
-            exerciseSchedule,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.put<ExerciseSchedule>(this.endpointURL, exerciseSchedule);
     }
 
     deleteExerciseSchedule(id: number): Observable<ExerciseSchedule> {
-        return this.http.delete<ExerciseSchedule>(
-            this.UrlServiceV1 + this.endpointName + id,
-            this.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.delete<ExerciseSchedule>(`${this.endpointURL}${id}`);
     }
 }

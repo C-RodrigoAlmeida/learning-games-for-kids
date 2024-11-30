@@ -1,53 +1,34 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { BaseService } from 'src/frontend/app/core/services/base.service';
 import { Word } from './words.model';
+import { Injectable } from '@angular/core';
+import { ApiService } from '../../core/services/api.service';
+import { PaginatedResponse } from '../../core/models/paginated-response.interface';
 
 @Injectable({
     providedIn: 'root',
 })
-export class WordService extends BaseService {
-    page: any;
-    rows: any;
-    search = '';
-    endpointName = '/words/';
+export class WordService {
+    endpointURL = '/words/';
 
-    constructor(private http: HttpClient) {
-        super();
-    }
+    constructor(private apiService: ApiService) {}
 
     getWord(id: number): Observable<Word> {
-        return this.http.get<Word>(
-            this.UrlServiceV1 + this.endpointName + id
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.getOne<Word>(`${this.endpointURL}${id}`);
     }
 
-    getWords(): Observable<Word[]> {
-        return this.http.get<Word[]>(
-            this.UrlServiceV1 + this.endpointName
-        ).pipe(catchError(super.serviceError));
+    getWords(): Observable<PaginatedResponse<Word>> {
+        return this.apiService.get<Word>(this.endpointURL);
     }
 
     createWord(word: Word): Observable<Word> {
-        return this.http.post<Word>(
-            this.UrlServiceV1 + this.endpointName,
-            word
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.post<Word>(this.endpointURL, word);
     }
 
     updateWord(id: number, word: Word): Observable<Word> {
-        return this.http.put<Word>(
-            this.UrlServiceV1 + this.endpointName + id + '/',
-            word
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.put<Word>(this.endpointURL, word);
     }
 
     deleteWord(id: number): Observable<Word> {
-        return this.http.delete<Word>(
-            this.UrlServiceV1 + this.endpointName + id,
-            this.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.delete<Word>(`${this.endpointURL}${id}`);
     }
 }

@@ -1,56 +1,34 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { BaseService } from 'src/frontend/app/core/services/base.service';
+import { Injectable } from '@angular/core';
 import { ExerciseRecord } from './exercise-record.model';
+import { ApiService } from 'src/frontend/app/core/services/api.service';
+import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ExerciseRecordService extends BaseService {
-    page: any;
-    rows: any;
-    search = '';
-    endpointName = '/exercise_records/';
+export class ExerciseRecordService {
+    endpointURL = '/exercise_records/';
 
-    constructor(private http: HttpClient) {
-        super();
-    }
+    constructor(private apiService: ApiService) {}
 
     getExerciseRecord(id: number): Observable<ExerciseRecord> {
-        return this.http.get<ExerciseRecord>(
-            this.UrlServiceV1 + this.endpointName + id,
-            super.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.getOne<ExerciseRecord>(`${this.endpointURL}${id}`);
     }
 
-    getExerciseRecords(): Observable<ExerciseRecord[]> {
-        return this.http.get<ExerciseRecord[]>(
-            this.UrlServiceV1 + this.endpointName
-        ).pipe(catchError(super.serviceError));
+    getExerciseRecords(): Observable<PaginatedResponse<ExerciseRecord>> {
+        return this.apiService.get<ExerciseRecord>(this.endpointURL);
     }
 
     createExerciseRecord(exerciseRecord: ExerciseRecord): Observable<ExerciseRecord> {
-        return this.http.post<ExerciseRecord>(
-            this.UrlServiceV1 + this.endpointName,
-            exerciseRecord,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.post<ExerciseRecord>(this.endpointURL, exerciseRecord);
     }
 
     updateExerciseRecord(exerciseRecord: ExerciseRecord): Observable<ExerciseRecord> {
-        return this.http.put<ExerciseRecord>(
-            this.UrlServiceV1 + this.endpointName + exerciseRecord.id,
-            exerciseRecord,
-            this.ObterAuthHeaderJson()
-        ).pipe(map(this.extractData), catchError(this.serviceError));
+        return this.apiService.put<ExerciseRecord>(this.endpointURL, exerciseRecord);
     }
 
     deleteExerciseRecord(id: number): Observable<ExerciseRecord> {
-        return this.http.delete<ExerciseRecord>(
-            this.UrlServiceV1 + this.endpointName + id,
-            this.ObterAuthHeaderJson()
-        ).pipe(catchError(super.serviceError));
+        return this.apiService.delete<ExerciseRecord>(`${this.endpointURL}${id}`);
     }
 }
