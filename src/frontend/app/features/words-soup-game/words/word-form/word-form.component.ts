@@ -1,7 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Validators, ReactiveFormsModule } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 import { Word } from '../words.model';
 import { WordService } from '../words.service';

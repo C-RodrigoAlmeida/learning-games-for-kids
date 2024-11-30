@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { Word } from './words.model';
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../core/services/api.service';
-import { PaginatedResponse } from '../../core/models/paginated-response.interface';
+import { ApiService } from 'src/frontend/app/core/services/api.service';
+import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
 
 @Injectable({
     providedIn: 'root',

@@ -6,8 +6,8 @@ import { MessagesModule } from 'primeng/messages';
 @Component({
     standalone: true,
     selector: 'retornos-mensagens',
-    templateUrl: './retornos.component.html',
-    styleUrls: ['./retornos.component.css'],
+    templateUrl: './toast-alerts.component.html',
+    styleUrls: ['./toast-alerts.component.css'],
     imports: [
         MessageModule,
         MessagesModule
