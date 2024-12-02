@@ -8,7 +8,7 @@ import { PaginatedResponse } from '../../../core/models/paginated-response.inter
   providedIn: 'root'
 })
 export class UserService {
-  private path = '/account/';
+  private path = '/accounts/';
 
   constructor(private apiService: ApiService) {}
 
