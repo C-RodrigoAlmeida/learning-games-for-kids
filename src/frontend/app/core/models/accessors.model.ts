@@ -1,4 +1,4 @@
-export interface TableHeader<T> {
+export interface Accessors<T> {
     label: string,
     key: keyof T
   }

@@ -1,0 +1,27 @@
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+	<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <h1 class="text-2xl font-bold mb-4">Selecione uma organização</h1>
+            <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+                <li *ngFor="let organization of organizations" class="pb-3 sm:pb-4">
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div class="flex-shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-lg font-medium text-gray-900 truncate">
+                            {{ organization.name }}
+                        </p>
+                        <p class="text-sm text-gray-500 truncate">
+                            {{ organization.email }}
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <button class="w-full bg-violet-400 text-black rounded-md px-2 py-1 hover:bg-violet-500 hover:text-white disabled:bg-gray-400 disabled:text-gray-600">Acessar</button>
+                    </div>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

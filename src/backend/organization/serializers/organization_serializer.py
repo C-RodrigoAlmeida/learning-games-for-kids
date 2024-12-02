@@ -8,7 +8,7 @@ class BaseOrganizationSerializer(BaseSerializer):
 
     class Meta(BaseSerializer.Meta):
         model = Organization
-        fields = BaseSerializer.Meta.fields + ["name", "description"]
+        fields = BaseSerializer.Meta.fields + ["name", "description", "email"]
 
 class OrganizationSerializer(BaseOrganizationSerializer):
     class Meta(BaseOrganizationSerializer.Meta):
@@ -16,4 +16,4 @@ class OrganizationSerializer(BaseOrganizationSerializer):
 
 class OrganizationDisplaySerializer(BaseOrganizationSerializer):
     class Meta(BaseOrganizationSerializer.Meta):
-        fields = ["id", "name"]
+        fields = ["id", "name", "email"]

@@ -37,7 +37,7 @@ export class LoginComponent {
       
       this.authService.login(credentials).subscribe({
         next: () => {
-          this.router.navigate(['/flights']);
+          this.router.navigate(['/organization']);
         },
         error: (error) => {
           this.errorMessage = error.error?.message || 'Algo deu errado. Tente novamente.';

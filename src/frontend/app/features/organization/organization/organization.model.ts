@@ -1,6 +1,7 @@
-import { BaseModel } from "../../core/models/base.model";
+import { BaseModel } from "src/frontend/app/core/models/base.model";
 
 export interface Organization extends BaseModel {
     name: string,
-    description?: string
+    description?: string,
+    email?: string
 }

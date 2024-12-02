@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Membership } from '../membership.model';
 import { MembershipService } from '../membership.service';
-import { TableHeader } from 'src/frontend/app/core/models/table-header.model'
+import { TableHeader } from 'src/frontend/app/core/models/accessors.model'
 import { TableComponent } from 'src/frontend/app/shared/components/table/table.component';
 
 @Component({

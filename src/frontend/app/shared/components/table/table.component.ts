@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { TableHeader } from 'src/frontend/app/core/models/table-header.model';
+import { Accessors } from 'src/frontend/app/core/models/accessors.model';
 
 @Component({
   selector: 'app-table',
@@ -10,7 +10,7 @@ import { TableHeader } from 'src/frontend/app/core/models/table-header.model';
   styleUrl: './table.component.css'
 })
 export class TableComponent<T> {
-  @Input() headers: TableHeader<T>[] = [];
+  @Input() headers: Accessors<T>[] = [];
   @Input() rows: T[] = [];
 
   getNestedProperty(obj: any, path: string | number | symbol): string {

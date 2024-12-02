@@ -3,9 +3,13 @@ import { Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./features/auth/components/login/login.component";
 import { RegisterComponent } from "./features/auth/components/register/register.component";
+import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
 
 export const routes: Routes = [
-    { path: '', component: AppComponent },
+    { path: '', 
+        redirectTo: 'login',
+        pathMatch: "full"
+    },
     {
         path: 'login',
         component: LoginComponent
@@ -13,6 +17,10 @@ export const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'organization',
+        component: SelectionComponent
     },
     {
         path: '**',

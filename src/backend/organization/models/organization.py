@@ -8,6 +8,8 @@ __all__ = ["Organization"]
 class Organization(BaseModel, Group):
     description = models.TextField(blank=True, null=True, default='')
     users = models.ManyToManyField(User, through='Membership')
+    is_approved = models.BooleanField(default=False)
+    email = models.EmailField(unique=True)
 
     class Meta:
         ordering = ["-id"]
