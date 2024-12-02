@@ -24,7 +24,7 @@ export class LoginComponent {
     ) {
         this.loginForm = this.fb.group({
             username: ['', [Validators.required]],
-            password: ['', [Validators.required]]
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 
@@ -37,7 +37,7 @@ export class LoginComponent {
 
             this.authService.login(credentials).subscribe({
                 next: () => {
-                    // this.router.navigate(['account/profile']);
+                    this.router.navigate(['/organization']);
                 },
                 error: (error) => {
                     this.errorMessage = error.error?.message || 'Algo deu errado. Tente novamente.';
