@@ -8,7 +8,7 @@ import { LoginCredentials, AuthResponse } from './models/auth.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private endpoint = '/accounts';
+  private endpoint = '/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
   private currentUser = new BehaviorSubject<any>(null);
 
