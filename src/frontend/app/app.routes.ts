@@ -6,6 +6,7 @@ import { ProfileComponent } from "./features/account/profile/profile.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
 import { StudentDashboardComponent } from "./features/organization/pages/student-dashboard/student-dashboard.component";
+import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -24,6 +25,10 @@ export const routes: Routes = [
     {
         path: 'organization',
         component: SelectionComponent
+    },
+    {
+        path: 'organization/register',
+        component: OrgRegisterComponent
     },
     {
         path: 'student-dashboard',
