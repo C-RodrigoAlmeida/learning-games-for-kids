@@ -6,16 +6,16 @@ import { AuthService } from '../../auth.service';
 import { LoginCredentials } from '../../models/auth.model';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './login.component.html'
+    selector: 'app-login',
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string = '';
-  isLoading: boolean = false;
-  showPassword = false;
+    loginForm: FormGroup;
+    errorMessage: string = '';
+    isLoading: boolean = false;
+    showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -50,10 +50,11 @@ export class LoginComponent {
     }
   }
 
-  navigateToRegister(): void {
-    this.router.navigate(['/register']);
-  }
+    navigateToRegister(): void {
+        this.router.navigate(['/register']);
+    }
 
-  get username() { return this.loginForm.get('username'); }
-  get password() { return this.loginForm.get('password'); }
-} 
+      get username() { return this.loginForm.get('username'); }
+      get password() { return this.loginForm.get('password'); }
+}
+  
