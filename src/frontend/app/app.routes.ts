@@ -5,6 +5,7 @@ import { RegisterComponent } from "./features/auth/components/register/register.
 import { ProfileComponent } from "./features/account/profile/profile.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
+import { StudentDashboardComponent } from "./features/organization/pages/student-dashboard/student-dashboard.component";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -23,6 +24,10 @@ export const routes: Routes = [
     {
         path: 'organization',
         component: SelectionComponent
+    },
+    {
+        path: 'student-dashboard',
+        component: StudentDashboardComponent
     },
     {
         path: '**',

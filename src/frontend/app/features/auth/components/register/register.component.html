@@ -121,6 +121,14 @@
               placeholder="Senha"
               required
             >
+            <label 
+              for="password" 
+              class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base 
+              peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 
+              peer-focus:text-gray-600 peer-focus:text-sm"
+            >
+              Senha
+            </label>
             <button 
               type="button"
               class="absolute right-2 text-gray-600"
@@ -129,14 +137,6 @@
               <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
             </button>
           </div>
-          <label 
-            for="password" 
-            class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base 
-            peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 
-            peer-focus:text-gray-600 peer-focus:text-sm"
-          >
-            Senha
-          </label>
           <div class="text-red-500 text-sm mt-1" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
             <span *ngIf="password?.errors?.['required']">A senha é obrigatória</span>
             <span *ngIf="password?.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres</span>
@@ -155,6 +155,14 @@
               placeholder="Confirmar Senha"
               required
             >
+            <label 
+              for="confirmPassword" 
+              class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base 
+              peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 
+              peer-focus:text-gray-600 peer-focus:text-sm"
+            >
+              Confirmar Senha
+            </label>
             <button 
               type="button"
               class="absolute right-2 text-gray-600"
@@ -163,14 +171,6 @@
               <i class="fas" [class.fa-eye]="!showConfirmPassword" [class.fa-eye-slash]="showConfirmPassword"></i>
             </button>
           </div>
-          <label 
-            for="confirmPassword" 
-            class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base 
-            peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 
-            peer-focus:text-gray-600 peer-focus:text-sm"
-          >
-            Confirmar Senha
-          </label>
           <div class="text-red-500 text-sm mt-1" *ngIf="registerForm.errors?.['mismatch']">
             As senhas não coincidem
           </div>

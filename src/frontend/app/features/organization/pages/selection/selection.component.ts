@@ -20,7 +20,7 @@ export class SelectionComponent {
       console.log(data);
       this.organizations = data.results;
     });
-  }
+  } 
 
   organizations: Organization[] = [];
 }
