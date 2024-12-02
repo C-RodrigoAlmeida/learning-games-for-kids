@@ -43,6 +43,13 @@
                 formControlName="password" 
                 required
               />
+              <label 
+              for="password" 
+              class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 
+                peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+              >
+                Senha
+                </label>
               <button 
                 type="button"
                 class="absolute right-2 text-gray-600"
@@ -51,13 +58,6 @@
                 <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
               </button>
             </div>
-            <label 
-              for="password" 
-              class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 
-                peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-              >
-                Senha
-            </label>
           </div>
           <div class="relative">
             <button 
