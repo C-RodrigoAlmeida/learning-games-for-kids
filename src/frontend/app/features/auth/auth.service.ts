@@ -47,4 +47,8 @@ export class AuthService {
         }
       });
   }
+
+  get isAuthenticated() { return this.authStatus }
+
+  get me() { return this.currentUser }
 }

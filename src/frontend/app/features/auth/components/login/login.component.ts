@@ -36,7 +36,8 @@ export class LoginComponent {
       const credentials: LoginCredentials = this.loginForm.value;
       
       this.authService.login(credentials).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log(response)
           this.router.navigate(['/organization']);
         },
         error: (error) => {

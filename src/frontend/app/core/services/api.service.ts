@@ -18,18 +18,18 @@ export class ApiService {
   }
 
   getOne<T>(path: string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}${path}`, { withCredentials: true} );
+    return this.http.get<T>(`${this.apiUrl}${path}`, { withCredentials: true } );
   }
 
   post<T>(path: string, body: any): Observable<T> {
-    return this.http.post<T>(`${this.apiUrl}${path}`, body);
+    return this.http.post<T>(`${this.apiUrl}${path}`, body, { withCredentials: true });
   }
 
   put<T>(path: string, body: any): Observable<T> {
-    return this.http.put<T>(`${this.apiUrl}${path}`, body);
+    return this.http.put<T>(`${this.apiUrl}${path}`, body, { withCredentials: true });
   }
 
   delete<T>(path: string): Observable<T> {
-    return this.http.delete<T>(`${this.apiUrl}${path}`);
+    return this.http.delete<T>(`${this.apiUrl}${path}`, { withCredentials: true });
   }
 }

@@ -1,43 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../features/auth/auth.service';
 
-import { Observable } from 'rxjs';
-import { LocalStorageUtils } from 'src/frontend/app/shared/utils/localstorage';
+export const authGuard = () => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
 
-@Injectable()
-export class BaseGuard implements CanActivate {
-    private localStorageUtils = new LocalStorageUtils();
-    private claims: any;
-    private valid: boolean = false;
+  if (authService.isAuthenticated) {
+    return true;
+  }
 
-    constructor(protected router: Router) { }
-
-    canActivate(claim: ActivatedRouteSnapshot): Observable<boolean> | boolean {
-
-        // this.claims = JSON.parse(localStorage.getItem('SFCV2-Claim'));
-
-        // if(this.claims !=null){ 
-        //   this.claims.forEach(element =>{
-        //     if((element.type === claim.data.type && element.value === claim.data.value)){
-        //       debugger;
-        //       this.valid = true;
-
-        //     }
-        //   })
-        // }
-
-        if (this.localStorageUtils.usuarioLogado()) {
-            console.log('logado')
-            return true;
-        }
-
-        // if (this.localStorageUtils.usuarioLogado() && this.valid === false) {
-
-        //   this.router.navigate(['/acesso-negado']);
-        //   return false;
-        // }
-
-        this.router.navigate(['/home']);
-        return false;
-    }
-}
+  return router.parseUrl('/login');
+}; 

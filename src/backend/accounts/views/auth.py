@@ -39,10 +39,13 @@ class LoginView(APIView):
         user = serializer.validated_data['user']
         login(request, user)
         
-        print("User logged in:", user)
-        return Response({
-            'user': UserAuthSerializer(user).data
-        })
+        if user.is_authenticated:
+            print("User logged in:", user.username)
+            return Response({
+                'user': UserAuthSerializer(user).data
+            })
+        else:
+            return Response({'error': 'Authentication failed'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @extend_schema(tags=['Authentication'])
 class LogoutView(APIView):
