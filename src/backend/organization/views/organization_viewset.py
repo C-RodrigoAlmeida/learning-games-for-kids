@@ -26,3 +26,4 @@ class OrganizationViewSet(viewsets.ModelViewSet):
         queryset = Membership.objects.select_related('user').filter(organization=organization)
         serializer: MembershipSerializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
