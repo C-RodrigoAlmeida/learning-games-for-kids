@@ -1,54 +1,40 @@
-import { tap } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
-import { LoginCredentials, AuthResponse } from './models/auth.model';
+import { LoginCredentials, Session } from './models/auth.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private endpoint = '/auth';
-  private authStatus = new BehaviorSubject<boolean>(false);
-  private currentUser = new BehaviorSubject<any>(null);
 
   constructor(private apiService: ApiService) {
-    this.checkAuthStatus();
+    this.checkSession();
   }
 
-  login(credentials: LoginCredentials): Observable<AuthResponse> {
-    return this.apiService.post<AuthResponse>(`${this.endpoint}/login/`, credentials).pipe(
-      tap((response: AuthResponse) => {
-        this.authStatus.next(true);
-        this.currentUser.next(response.user);
-      })
-    );
+  login(credentials: LoginCredentials): Observable<void> {
+    return this.apiService.post<void>(`${this.endpoint}/login/`, credentials);
   }
 
   logout(): Observable<void> {
-    return this.apiService.post<void>(`${this.endpoint}/logout/`, {}).pipe(
-      tap(() => {
-        this.authStatus.next(false);
-        this.currentUser.next(null);
+    return this.apiService.post<void>(`${this.endpoint}/logout/`, {});
+  }
+
+  checkSession(): Observable<Session> {
+    return this.apiService.getOne<Session>(`${this.endpoint}/session/`).pipe(
+      map((response: Session) => {
+        if (response) {
+          return response;
+        } else {
+          throw new Error('No session found');
+        }
+      }),
+      catchError((error) => {
+        console.error(error);
+        return of(null);
       })
     );
   }
-
-  checkAuthStatus(): void {
-    this.apiService.getOne<AuthResponse>(`${this.endpoint}/session/`)
-      .subscribe({
-        next: (response) => {
-          this.authStatus.next(true);
-          this.currentUser.next(response.user);
-        },
-        error: () => {
-          this.authStatus.next(false);
-          this.currentUser.next(null);
-        }
-      });
-  }
-
-  get isAuthenticated() { return this.authStatus }
-
-  get me() { return this.currentUser }
 }

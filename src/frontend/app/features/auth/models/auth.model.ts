@@ -5,7 +5,7 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface AuthResponse extends BaseModel {
+export interface Session {
   user: {
     username: string;
     email: string;

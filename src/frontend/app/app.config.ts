@@ -5,8 +5,9 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MessageService, SharedModule } from 'primeng/api';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -15,7 +16,9 @@ export const appConfig: ApplicationConfig = {
         provideClientHydration(),
         provideAnimationsAsync(),
         provideAnimations(),
-        provideHttpClient(),
+        provideHttpClient(
+            withInterceptors([AuthInterceptor])
+        ),
         SharedModule,
         MessageService,
     ]

@@ -14,22 +14,22 @@ export class ApiService {
 
 
   get<T>(path: string, params: HttpParams = new HttpParams()): Observable<PaginatedResponse<T>> {
-    return this.http.get<PaginatedResponse<T>>(`${this.apiUrl}${path}`, { params, withCredentials: true });
+    return this.http.get<PaginatedResponse<T>>(`${this.apiUrl}${path}`, { params });
   }
 
   getOne<T>(path: string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}${path}`, { withCredentials: true } );
+    return this.http.get<T>(`${this.apiUrl}${path}`);
   }
 
   post<T>(path: string, body: any): Observable<T> {
-    return this.http.post<T>(`${this.apiUrl}${path}`, body, { withCredentials: true });
+    return this.http.post<T>(`${this.apiUrl}${path}`, body);
   }
 
   put<T>(path: string, body: any): Observable<T> {
-    return this.http.put<T>(`${this.apiUrl}${path}`, body, { withCredentials: true });
+    return this.http.put<T>(`${this.apiUrl}${path}`, body);
   }
 
   delete<T>(path: string): Observable<T> {
-    return this.http.delete<T>(`${this.apiUrl}${path}`, { withCredentials: true });
+    return this.http.delete<T>(`${this.apiUrl}${path}`);
   }
 }

@@ -7,7 +7,7 @@ import { NotFoundComponent } from "./features/auth/components/not-found/not-foun
 import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
 import { StudentDashboardComponent } from "./features/organization/pages/student-dashboard/student-dashboard.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
-import { authGuard } from "./core/guards/base.guard";
+import { AuthGuard } from "./core/guards/auth.guard";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -22,22 +22,22 @@ export const routes: Routes = [
     {
         path: 'account/profile',
         component: ProfileComponent,
-        canActivate: [authGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'organization',
         component: SelectionComponent,
-        canActivate: [authGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'organization/register',
         component: OrgRegisterComponent,
-        canActivate: [authGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'student-dashboard',
         component: StudentDashboardComponent,
-        canActivate: [authGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: '**',
