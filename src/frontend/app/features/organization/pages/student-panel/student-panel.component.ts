@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
   selector: 'app-selection',
   standalone: true,
   imports: [],
-  templateUrl: './student-dashboard.component.html'
+  templateUrl: './student-panel.component.html'
 })
-export class StudentDashboardComponent {
+export class StudentPanelComponent {
   constructor(
     private authService: AuthService,
     private router: Router

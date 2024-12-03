@@ -1,0 +1,46 @@
+
+<aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+   <div class="h-full px-3 py-4 overflow-y-auto text-white bg-slate-800/25 backdrop-blur-sm shadow-lg">
+      <h1 class="text-2xl font-bold text-center mb-4">Painel do Professor</h1>
+      <ul class="space-y-2 font-medium">
+         <li>
+            <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-puzzle-piece"></i>
+               <span class="ms-3">Exercícios</span>
+            </button>
+         </li>
+         <li>
+            <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-calendar-days"></i>
+               <span class="ms-3">Agendamento</span>
+            </button>
+         </li>
+         <li>
+            <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-book"></i>
+               <span class="ms-3">Classes</span>
+            </button>
+         </li>
+         <li>
+            <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-users"></i>
+               <span class="ms-3">Alunos</span>
+            </button>
+         </li>
+      </ul>
+      <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
+         <li>
+            <button href="#" class="w-full flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-user"></i>
+               <span class="ms-3">Perfil</span>
+            </button>
+         </li>
+         <li>
+            <button (click)="logout()" class="w-full flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-white/20 group">
+               <i class="fa-solid fa-right-from-bracket"></i>
+               <span class="ms-3">Sair</span>
+            </button>
+         </li>
+      </ul>
+   </div>
+</aside>
