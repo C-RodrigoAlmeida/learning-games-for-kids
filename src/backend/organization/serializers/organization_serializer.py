@@ -16,4 +16,4 @@ class OrganizationSerializer(BaseOrganizationSerializer):
 
 class OrganizationDisplaySerializer(BaseOrganizationSerializer):
     class Meta(BaseOrganizationSerializer.Meta):
-        fields = ["id", "name", "email"]
+        fields = ["id", "name", "email", "is_approved"]

@@ -1,0 +1,41 @@
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div
+			class="absolute inset-0 bg-gradient-to-r from-amber-400 to-red-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+		</div>
+<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+  <div class="max-w-md mx-auto">
+    <div>
+      <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Formulário de cadastro para organização {{ organization.name }}</h1>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="py-8 text-base leading-6 space-y-6 text-gray-700 sm:text-lg sm:leading-7">
+      <div class="flex-1 min-w-0">
+        <p class="text-lg font-medium font-semibold text-gray-900 truncate">
+            Cargo
+        </p>
+        <select name="role" id="role" formControlName="role" class="w-full">
+            <option value="" disabled selected>Selecione um cargo</option>
+            <option value="admin">Administrador</option>
+            <option value="teacher">Professor</option>
+            <option value="student">Aluno</option>
+        </select>
+      </div>
+      <button 
+        type="submit" 
+        class="w-full bg-violet-400 text-black rounded-md px-2 py-1 hover:bg-violet-500 hover:text-white disabled:bg-gray-400 disabled:text-gray-600"
+        [disabled]="registerForm.invalid || isLoading" 
+      >
+        {{ isLoading ? 'Registrando...' : 'Registrar' }}
+      </button>
+    </form>
+    <div class="text-red-500 text-sm mt-1" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <button 
+      (click)="navigateToOrgSelection()"
+      class="w-full text-blue-600 hover:underline"
+    >
+      Desistiu do cadastro? Retorne aqui.
+    </button>
+  </div>
+</div> 

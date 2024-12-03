@@ -18,9 +18,9 @@ export class RegisterComponent {
   showConfirmPassword = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private userService: UserService,
-    private router: Router
+    private userService: UserService
   ) {
     this.registerForm = this.fb.nonNullable.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -51,6 +51,7 @@ export class RegisterComponent {
         },
         error: (error) => {
           this.errorMessage = error.error?.message || 'Registration failed. Please try again.';
+          this.isLoading = false;
         }
       });
     }

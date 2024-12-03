@@ -4,13 +4,14 @@ import { AuthGuard } from "./core/guards/auth.guard";
 import { ProfileComponent } from "./features/account/profile/profile.component";
 import { LoginComponent } from "./features/auth/components/login/login.component";
 import { CalendarComponent } from "./shared/components/calendar/calendar.component";
+import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 import { RegisterComponent } from "./features/auth/components/register/register.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
-import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
 import { TeacherPanelComponent } from "./features/organization/pages/teacher-panel/teacher-panel.component";
 import { StudentPanelComponent } from "./features/organization/pages/student-panel/student-panel.component";
-import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
+import { OrganizationSelectionComponent } from "./features/organization/pages/org-selection/org-selection.component";
+import { MembershipRegisterComponent } from "./features/organization/pages/membership-register/membership-register.component";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -28,8 +29,13 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'organization',
-        component: SelectionComponent,
+        path: 'membership/register/:id',
+        component: MembershipRegisterComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'organization/selection',
+        component: OrganizationSelectionComponent,
         canActivate: [AuthGuard]
     },
     {

@@ -11,7 +11,6 @@ class RoleChoices(models.TextChoices):
     TEACHER = 'teacher', 'Teacher'
     STUDENT  = 'student', 'Student'
 
-
 class Membership(BaseModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="membership")
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="membership")
