@@ -10,6 +10,7 @@ import { SelectionComponent } from "./features/organization/pages/selection/sele
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
 import { TeacherPanelComponent } from "./features/organization/pages/teacher-panel/teacher-panel.component";
 import { StudentPanelComponent } from "./features/organization/pages/student-panel/student-panel.component";
+import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -49,6 +50,11 @@ export const routes: Routes = [
     {
         path: 'calendar',
         component: CalendarComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'play',
+        component: PlayComponent,
         canActivate: [AuthGuard]
     },
     {
