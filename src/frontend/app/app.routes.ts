@@ -7,6 +7,7 @@ import { NotFoundComponent } from "./features/auth/components/not-found/not-foun
 import { SelectionComponent } from "./features/organization/pages/selection/selection.component";
 import { StudentDashboardComponent } from "./features/organization/pages/student-dashboard/student-dashboard.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
+import { authGuard } from "./core/guards/base.guard";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -20,22 +21,26 @@ export const routes: Routes = [
     },
     {
         path: 'account/profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'organization',
-        component: SelectionComponent
+        component: SelectionComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'organization/register',
-        component: OrgRegisterComponent
+        component: OrgRegisterComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'student-dashboard',
-        component: StudentDashboardComponent
+        component: StudentDashboardComponent,
+        canActivate: [authGuard]
     },
     {
         path: '**',
-        component: NotFoundComponent // mudar para 404 not found
+        component: NotFoundComponent
     },
 ]

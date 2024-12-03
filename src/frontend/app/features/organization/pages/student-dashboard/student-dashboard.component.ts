@@ -13,8 +13,15 @@ export class StudentDashboardComponent {
     private router: Router
   ){}
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        console.error('Error during logout:', error);
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }
