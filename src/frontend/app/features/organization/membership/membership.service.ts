@@ -8,18 +8,18 @@ import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-respon
     providedIn: 'root',
 })
 export class MembershipService {
-    endpointURL = '/membership/';
+    endpointURL = '/membership';
 
     constructor(private apiService: ApiService) {}
 
     getMembership(id: number): Observable<Membership> {
-        return this.apiService.getOne<Membership>(`${this.endpointURL}${id}`);
+        return this.apiService.getOne<Membership>(`${this.endpointURL}/${id}`);
     }
 
     getMemberships(): Observable<PaginatedResponse<Membership>> {
         return this.apiService.get<Membership>(this.endpointURL);
     }
-
+    
     createMembership(membership: Membership): Observable<Membership> {
         return this.apiService.post<Membership>(this.endpointURL, membership);
     }
@@ -29,6 +29,6 @@ export class MembershipService {
     }
 
     deleteMembership(id: number): Observable<Membership> {
-        return this.apiService.delete<Membership>(`${this.endpointURL}${id}`);
+        return this.apiService.delete<Membership>(`${this.endpointURL}/${id}`);
     }
 }

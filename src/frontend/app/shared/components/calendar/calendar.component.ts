@@ -11,7 +11,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CalendarModule,
   ],
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css'],
   providers: [
     {
       provide: DateAdapter,
