@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { AuthService } from '../../../auth/auth.service';
 import { Membership } from '../../membership/membership.model';
 import { Organization } from '../../organization/organization.model';
 import { OrganizationService } from '../../organization/organization.service';
@@ -17,6 +18,7 @@ export class OrganizationSelectionComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private authService: AuthService,
     private organizationService: OrganizationService
     
   ){
@@ -39,13 +41,17 @@ export class OrganizationSelectionComponent {
   organizations: Organization[] = [];
 
   navigateToPanel(membership: Membership): void {
-    if (membership.role === 'teacher' || membership.role === 'admin'){
-      this.router.navigate(['teacher-panel']);
-    }
-    else {
-      this.router.navigate(['student-panel']);
-    } 
-      
+    this.authService.createSessionMembership(membership).subscribe({
+      next: (data) => {
+        console.log(data);
+        if (membership.role === 'teacher' || membership.role === 'admin'){
+          this.router.navigate(['teacher/panel']);
+        }
+        else {
+          this.router.navigate(['student/panel']);
+        } 
+      }
+    });
   }
 
   navigateToOrganizationRegister(): void {

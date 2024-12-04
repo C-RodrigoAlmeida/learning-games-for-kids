@@ -16,7 +16,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
 
     def get_serializer_class(self) -> OrganizationSerializer | MembershipSerializer:
-        if self.action == 'membership':
+        if self.action == 'membership' or self.action == 'membership_student':
             return MembershipSerializer
         return OrganizationSerializer
     
@@ -35,10 +35,16 @@ class OrganizationViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
     
-    @action(detail=True, methods=['get'])
-    def membership(self, request: HTTPRequest, pk: str) -> Response:
-        organization = get_object_or_404(Organization, pk=pk)
-        queryset = Membership.objects.select_related('user').filter(organization=organization)
+    @action(detail=False, methods=['get'])
+    def membership(self, request: HTTPRequest) -> Response:
+        organization = get_object_or_404(Organization, request.session.get('membership', None).organization)
+        queryset = Membership.objects.filter(organization=organization)
         serializer: MembershipSerializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    @action(detail=False, methods=['get'], url_path='student')
+    def membership_student(self, request: HTTPRequest) -> Response:
+        organization = get_object_or_404(Organization, request.session.get('membership', None).organization)
+        queryset = Membership.objects.filter(organization=organization, role=RoleChoices.STUDENT)
+        serializer: MembershipSerializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

@@ -1,0 +1,105 @@
+<app-sidebar></app-sidebar>
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+        <div class="max-w-md mx-auto">
+          <div>
+            <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Registrar um exercício</h1>
+          </div>
+          <form [formGroup]="exerciseForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()" class="py-8 text-base leading-6 space-y-6 text-gray-700 sm:text-lg sm:leading-7">
+            <div class="relative">
+              <input
+                type="title"
+                id="title"
+                name="title"
+                formControlName="title"
+                placeholder="Título"
+                class="peer placeholder-transparent h-10 w-full border-b-2 border-black text-gray-900 
+                  focus:outline-none focus:border-violet-500 bg-transparent" 
+                required
+              >
+              <label 
+                for="title" 
+                class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base 
+                peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 
+                peer-focus:text-gray-600 peer-focus:text-sm"
+              >
+                Título do exercício
+              </label>
+              <div class="text-red-500 text-sm mt-1" *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+                <span *ngIf="title?.errors?.['required']">Título do exercício é obrigatório</span>
+              </div>
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <h2>
+                Selecione a palavra correta
+            </h2>
+            <select name="correctWord" id="correctWord" formControlName="correctWord" class="w-full">
+                <option value="" disabled selected>Selecione uma palavra</option>
+                <option value="{{ word.id }}" *ngFor="let word of availableWords">{{ word.name }}</option>
+            </select>
+          </div>
+          
+          <div>
+            <h2>Selecione as palavras incorretas</h2>
+            <label *ngFor="let word of availableWords">
+              <input type="checkbox" [value]="word.id" (change)="onCheckboxChange($event)" />
+              {{ word.name }}
+            </label>
+          </div>
+
+          <div>
+            <h2> Deseja salvar como público ?</h2>
+
+            <label>
+              <input type="radio" formControlName="isPublic" name="isPublic" id="isPublic" value="true">
+              Sim
+            </label>
+            <label>
+              <input type="radio" formControlName="isPublic" name="isPublic" id="isPublic" value="false">
+              Não
+            </label>
+            
+          </div>
+
+        <div class="relative">
+            <input
+            type="file"
+            id="image"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+            class="hidden"
+            #fileInput
+            >
+            <div class="flex items-center gap-2">
+            <button 
+                type="button"
+                (click)="fileInput.click()"
+                class="bg-violet-400 text-black rounded-md px-4 py-2 hover:bg-violet-500 hover:text-white"
+            >
+                Selecionar Imagem
+            </button>
+            <span class="text-gray-600 text-sm" *ngIf="selectedFileName">
+                {{ selectedFileName }}
+            </span>
+            </div>
+            
+            <!-- Preview da imagem -->
+            <div *ngIf="imagePreview" class="mt-2">
+              <img [src]="imagePreview" class="max-w-xs rounded-lg shadow-md">
+            </div>
+        </div>
+        <button 
+          type="submit" 
+          class="w-full bg-violet-400 text-black rounded-md px-2 py-1 hover:bg-violet-500 hover:text-white disabled:bg-gray-400 disabled:text-gray-600"
+          [disabled]="exerciseForm.invalid || isLoading" 
+        >
+          {{ isLoading ? 'Registrando...' : 'Registrar' }}
+        </button>
+      </form>
+      <div class="text-red-500 text-sm mt-1" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </div>
+</div>
