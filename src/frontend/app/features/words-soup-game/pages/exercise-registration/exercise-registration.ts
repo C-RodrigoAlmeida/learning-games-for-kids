@@ -21,8 +21,6 @@ export class ExerciseRegistrationComponent {
   availableWords: Word[] = [];
   isLoading = false;
   errorMessage = '';
-  selectedFileName: string = '';
-  imagePreview: string | null = null;
 
   constructor(
     private exerciseService: ExerciseService,
@@ -35,7 +33,7 @@ export class ExerciseRegistrationComponent {
       wrongWords: this.formBuilder.nonNullable.array([]),
       correctWord: [null, Validators.required],
       isPublic: ['', Validators.required],
-      image: ['', Validators.required]
+      image: [null, Validators.required],
     });
     this.wordService.getWords().subscribe(words => {
       console.log(words);
@@ -46,7 +44,13 @@ export class ExerciseRegistrationComponent {
   onSubmit() {
     if (!this.exerciseForm.valid) return;
     this.isLoading = true;
-    const formData: Exercise = this.exerciseForm.value;
+    const formData: Exercise = {
+      title: this.title.value,
+      correct_word: this.correctWord.value,
+      wrong_words: this.wrongWords.value,
+      is_public: this.isPublic.value,
+      image: this.image.value
+    }
 
     this.exerciseService.createExercise(formData).subscribe({
       next: () => {
@@ -74,25 +78,10 @@ export class ExerciseRegistrationComponent {
     }
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedFileName = file.name;
-      
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-      
-      this.exerciseForm.patchValue({
-        image: file
-      });
-    }
-  }
   
   get title() { return this.exerciseForm.get('title'); }
   get wrongWords() { return this.exerciseForm.get('wrongWords'); }
   get correctWord() { return this.exerciseForm.get('correctWord'); }
   get isPublic() { return this.exerciseForm.get('isPublic'); }
+  get image() { return this.exerciseForm.get('image'); }
 }

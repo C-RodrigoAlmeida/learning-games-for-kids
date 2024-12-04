@@ -14,6 +14,8 @@ from src.backend.accounts.serializers.auth import (
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.utils.decorators import method_decorator
 
+from src.backend.organization.serializers.membership_serializer import MembershipSerializer
+
 @extend_schema(tags=['Authentication'])
 @api_view(['GET'])
 @ensure_csrf_cookie
@@ -67,7 +69,8 @@ class SessionView(APIView):
     )
     def get(self, request):
         return Response({
-            'user': UserAuthSerializer(request.user).data
+            'user': UserAuthSerializer(request.user).data,
+            'membership': MembershipSerializer(self.request.session.get('membership', None)).data
         })
     
     @extend_schema(tags=['Authentication'])
