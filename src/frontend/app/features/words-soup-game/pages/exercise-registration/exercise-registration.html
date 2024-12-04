@@ -67,28 +67,10 @@
             <input
             type="file"
             id="image"
-            (change)="onFileSelected($event)"
             accept="image/*"
-            class="hidden"
-            #fileInput
+            formControlName="image"
             >
-            <div class="flex items-center gap-2">
-            <button 
-                type="button"
-                (click)="fileInput.click()"
-                class="bg-violet-400 text-black rounded-md px-4 py-2 hover:bg-violet-500 hover:text-white"
-            >
-                Selecionar Imagem
-            </button>
-            <span class="text-gray-600 text-sm" *ngIf="selectedFileName">
-                {{ selectedFileName }}
-            </span>
-            </div>
-            
-            <!-- Preview da imagem -->
-            <div *ngIf="imagePreview" class="mt-2">
-              <img [src]="imagePreview" class="max-w-xs rounded-lg shadow-md">
-            </div>
+ 
         </div>
         <button 
           type="submit" 

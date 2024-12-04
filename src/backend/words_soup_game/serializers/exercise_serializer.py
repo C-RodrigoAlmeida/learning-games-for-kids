@@ -8,10 +8,11 @@ __all__ = ["ExerciseSerializer"]
 class ExerciseSerializer(BaseSerializer):    
     correct_word = WordDisplaySerializer()
     wrong_words = WordDisplaySerializer(many=True)
-    organization = OrganizationDisplaySerializer()
+    organization = OrganizationDisplaySerializer(read_only=True)
     class Meta(BaseSerializer.Meta):
         model = Exercise
         fields = BaseSerializer.Meta.fields + ["title", "image", "wrong_words", "correct_word", "is_public", "organization", "created_by"]
+        read_only_feilds = ["organization", "created_by"]
 
 class ExerciseDisplaySerializer(ExerciseSerializer):
     class Meta(ExerciseSerializer.Meta):
