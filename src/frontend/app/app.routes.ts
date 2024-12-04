@@ -4,7 +4,6 @@ import { AuthGuard } from "./core/guards/auth.guard";
 import { ProfileComponent } from "./features/account/profile/profile.component";
 import { LoginComponent } from "./features/auth/components/login/login.component";
 import { CalendarComponent } from "./shared/components/calendar/calendar.component";
-// import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 import { RegisterComponent } from "./features/auth/components/register/register.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
