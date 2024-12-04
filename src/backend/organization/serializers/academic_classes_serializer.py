@@ -3,7 +3,7 @@ from src.backend.organization.models import AcademicClasses
 from src.backend.organization.serializers.organization_serializer import OrganizationDisplaySerializer
 from src.backend.accounts.serializers import UserDisplaySerializer
 
-__all__ = ["BaseAcademicClassesSerializer", "AcademicClassesSerializer"]
+__all__ = ["BaseAcademicClassesSerializer", "AcademicClassesSerializer", "AcademicClassCreateSerializer"]
 
 class BaseAcademicClassesSerializer(BaseSerializer):
     organization = OrganizationDisplaySerializer()
@@ -17,6 +17,11 @@ class BaseAcademicClassesSerializer(BaseSerializer):
 class AcademicClassesSerializer(BaseAcademicClassesSerializer):
     class Meta(BaseAcademicClassesSerializer.Meta):
         fields = BaseAcademicClassesSerializer.Meta.fields
+
+class AcademicClassCreateSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
+        model = AcademicClasses
+        fields = ["name", "teacher", "students"]
 
 class AcademicClassDisplaySerializer(BaseAcademicClassesSerializer):
     class Meta(BaseAcademicClassesSerializer.Meta):

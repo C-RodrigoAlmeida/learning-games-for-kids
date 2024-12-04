@@ -2,24 +2,26 @@
     <main class="w-full max-w-3xl flex flex-col items-center mt-8 px-4">
         <div class="w-full h-80 mb-8">
             <h1 class="text-4xl font-bold text-center mb-4">Sopa de Letrinhas!</h1>
-            <img class="w-full h-full object-cover rounded-lg shadow-lg">
+            <img class="w-full h-full object-cover rounded-lg shadow-lg" [src]="exercise.image">
         </div>
 
         <div class="w-full my-8">
             <label class="text-xl font-semibold">Quais palavras correspondem a imagem?</label>
             <div class="grid grid-cols-2 gap-6 mt-4">
-                <div>
-                    <label class="bg-blue-800 form-control-container py-4 px-6 rounded-lg shadow-lg text-xl text-center">
-                    </label>
-                </div>
-                <div>
-                    <label class="form-control-container py-4 px-6 rounded-lg shadow-lg text-xl text-center">
-                    </label>
-                </div>
-                <div>
-                    <label class="form-control-container py-4 px-6 rounded-lg shadow-lg text-xl text-center">
-                    </label>
-                </div>
+                <label *ngFor="let word of words; let i = index"
+                    class="bg-blue-800 form-control-container py-4 px-6 rounded-lg shadow-lg text-xl text-center"
+                    [class.bg-green-600]="i === 0"
+                    [class.bg-red-600]="i === 1"
+                    [class.bg-yellow-600]="i === 2"
+                    [class.bg-purple-600]="i === 3"
+                    [class.bg-orange-600]="i === 4"
+                    [class.bg-pink-600]="i === 5"
+                    [class.bg-gray-600]="i === 6"
+                    [class.bg-teal-600]="i === 7"
+                    >
+                    <input type="checkbox" [value]="word.id" (change)="onCheckboxChange($event)" />
+                    {{ word.name }}
+                </label>
             </div>
         </div>
 

@@ -5,15 +5,16 @@
         <h1 class="text-2xl font-bold text-center mb-4">Painel do Professor</h1>
         <ul class="space-y-2 font-medium">
             <li>
-                <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
-                    <i class="fa-solid fa-puzzle-piece"></i>
-                    <span class="ms-3">Exercícios</span>
+                <button (click)="redirectToPanel()"
+                    class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span class="ms-3">Dashboard</span>
                 </button>
             </li>
             <li>
-                <button href="#" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <span class="ms-3">Agendamento</span>
+                <button (click)="redirectTo('/exercises')" class="w-full flex items-center p-2 text-white rounded-lg hover:bg-white/20 group">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <span class="ms-3">Exercícios</span>
                 </button>
             </li>
             <li>
@@ -32,7 +33,7 @@
         </ul>
         <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
             <li>
-                <button (click)="redirectToPanel()"
+                <button (click)="redirectTo('/profile')"
                     class="w-full flex items-center p-2 text-white transition duration-75 rounded-lg hover:bg-white/20 group">
                     <i class="fa-solid fa-user"></i>
                     <span class="ms-3">Perfil</span>

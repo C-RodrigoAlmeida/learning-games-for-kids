@@ -4,7 +4,6 @@ import { AuthGuard } from "./core/guards/auth.guard";
 import { ProfileComponent } from "./features/account/profile/profile.component";
 import { LoginComponent } from "./features/auth/components/login/login.component";
 import { CalendarComponent } from "./shared/components/calendar/calendar.component";
-// import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 import { RegisterComponent } from "./features/auth/components/register/register.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
@@ -16,6 +15,10 @@ import { StudentsListComponent } from "./features/organization/pages/teacher-pan
 import { WordRegistrationComponent } from "./features/words-soup-game/pages/word-registration/word-registration.component";
 import { ExerciseRegistrationComponent } from "./features/words-soup-game/pages/exercise-registration/exercise-registration.component";
 import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
+import { ExerciseListComponent } from "./features/words-soup-game/pages/exercise-list/exercise-list.component";
+import { ExerciseScheduleComponent } from "./features/organization/pages/teacher-panel/exercise-schedule/exercise-schedule.component";
+import { ClassRegisterComponent } from "./features/organization/pages/teacher-panel/class-register/class-register.component";
+import { StudentScoreComponent } from "./features/organization/pages/student-panel/student-score/student-score.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: "full" },
@@ -73,13 +76,38 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'exercises',
+        component: ExerciseListComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'exercise/registration',
         component: ExerciseRegistrationComponent,
         canActivate: [AuthGuard]
     },
     {
+        path: 'exercise/schedule/:id',
+        component: ExerciseScheduleComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'exercise/list',
+        component: ExerciseListComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'class/register',
+        component: ClassRegisterComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'play',
         component: PlayComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'student/score',
+        component: StudentScoreComponent,
         canActivate: [AuthGuard]
     },
     {

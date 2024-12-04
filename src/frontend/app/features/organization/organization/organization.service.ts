@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Organization, OrganizationRegisterStudent } from './organization.model';
 import { ApiService } from 'src/frontend/app/core/services/api.service';
 import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
+import { AcademicClass } from '../academic-classes/academic-class.model';
 
 @Injectable({
     providedIn: 'root',
@@ -18,6 +19,10 @@ export class OrganizationService {
 
     getNotMemberOrganizations(): Observable<PaginatedResponse<Organization>> {
         return this.apiService.get<Organization>('/membership/organizations/not-member');
+    }
+
+    getAcademicClasses(): Observable<PaginatedResponse<AcademicClass>> {
+        return this.apiService.get<AcademicClass>(`${this.endpointURL}academic_classes`);
     }
 
     getOrganization(id: number): Observable<Organization> {

@@ -24,4 +24,8 @@ export class StudentPanelComponent {
       }
     });
   }
+
+  navigateTo(path: string): void {
+    this.router.navigate([path]); 
+  }
 }

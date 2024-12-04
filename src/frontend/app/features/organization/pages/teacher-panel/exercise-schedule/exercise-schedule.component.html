@@ -1,0 +1,47 @@
+<app-sidebar></app-sidebar>
+
+<div class="p-4 sm:ml-64 mt-16">
+    <div class="max-w-4xl mx-auto p-8 rounded-lg shadow-md bg-white/80">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4 text-center">Agendamento de Exercícios</h2>
+  
+      <form class="space-y-6" [formGroup]="formSchedule" (ngSubmit)="onSubmit()">
+
+        <!-- Date Picker -->
+        <div>
+          <label for="date" class="block text-gray-700 font-medium mb-1">Selecione uma data para o agendamento:</label>
+          <input
+            id="date"
+            type="date"
+            name="date"
+            formControlName="deadline"
+            class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
+            required
+          />
+        </div>
+  
+        <!-- Class Selector -->
+        <div>
+          <label for="classes" class="block text-gray-700 font-medium mb-1">Selecione uma Turma:</label>
+          <select
+            id="classes"
+            name="classes"
+            formControlName="academicClass"
+            class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
+          >
+            <option *ngFor="let class of academicClasses" [value]="class">{{ class }}</option>
+          </select>
+        </div>
+  
+        <!-- Submit Button -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-blue-500 text-white font-medium p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+          >
+            Agendar Exercício
+          </button>
+        </div>
+      </form>
+    </div>
+</div>
+  
