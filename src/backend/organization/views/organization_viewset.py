@@ -55,7 +55,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     
     @action(detail=False, methods=["get"])
     def academic_classes(self, request: HTTPRequest) -> Response:
-        organization = get_object_or_404(Organization, request.session.get('membership', None).get('organization', None).get('id', None))
+        organization = get_object_or_404(Organization, pk=self.request.session.get('membership', None).get('organization', None).get('id', None))
         queryset = organization.student_classes.all()
         serializer = self.get_serializer(queryset, many=True)        
         return Response(serializer.data)

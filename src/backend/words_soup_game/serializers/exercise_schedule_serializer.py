@@ -15,12 +15,12 @@ class BaseExerciseScheduleSerializer(BaseSerializer):
     academic_class = AcademicClassDisplaySerializer()
     class Meta(BaseSerializer.Meta):
         model = ExerciseSchedule
-        fields = BaseSerializer.Meta.fields + ["academic_class", "exercise", "deadline", "organization"]
+        fields = BaseSerializer.Meta.fields + ["academic_class", "exercise", "deadline", "organization", "created_by"] 
 
 
 class ExerciseScheduleSerializer(BaseExerciseScheduleSerializer):
     class Meta(BaseExerciseScheduleSerializer.Meta):
-        fields = BaseExerciseScheduleSerializer.Meta.fields + ["created_by"]
+        fields = BaseExerciseScheduleSerializer.Meta.fields
 
 class ExerciseScheduleDisplaySerializer(BaseExerciseScheduleSerializer):
     class Meta(BaseExerciseScheduleSerializer.Meta):

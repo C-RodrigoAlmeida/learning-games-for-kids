@@ -23,4 +23,4 @@ class ExerciseCreateSerializer(BaseSerializer):
 
 class ExerciseDisplaySerializer(ExerciseSerializer):
     class Meta(ExerciseSerializer.Meta):
-        fields = ["id", "correct_word", "wrong_words", "title"]
+        fields = ["id", "correct_word", "wrong_words", "title", "image"]

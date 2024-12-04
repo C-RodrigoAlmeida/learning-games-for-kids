@@ -42,6 +42,7 @@ export class ClassRegisterComponent {
         });
     }
 
+
     onCheckboxChange(event: any) {
         const selections = this.form.controls['students'] as FormArray;
         if (event.target.checked) {
@@ -54,12 +55,14 @@ export class ClassRegisterComponent {
     onSubmit(){
         const formData = {
             name: this.form.get('name')?.value,
-            teacher: Number(this.form.get('teacher')?.value),
-            students: this.form.get('students')?.value.map(student => Number(student))
+            teacher: this.form.get('teacher')?.value,
+            students: this.form.get('students')?.value.map((student: any) => student)
         }
 
-        this.academicClassService.createAcademicClass(formData).subscribe(response => {
-            this.router.navigate(['/classes']);
-        });
+        console.log(formData);
+
+        // this.academicClassService.createAcademicClass(formData).subscribe(response => {
+        //     this.router.navigate(['/classes']);
+        // });
     }
 }
