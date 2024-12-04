@@ -1,12 +1,14 @@
 import { Exercise } from "../exercise/exercise.model";
-import { BaseModel } from "../../../core/models/base.model";
-import { User } from "src/frontend/app/accounts/user.model";
+import { BaseModel } from "src/frontend/app/core/models/base.model";
 import { ExerciseSchedule } from "../exercise-schedule/exercise-schedule.model";
-import { Organization } from "src/frontend/app/organization/organization/organization.model";
+import { Membership } from "../../../organization/membership/membership.model";
+import { Word } from "../../words/words.model";
 
 export interface ExerciseRecord extends BaseModel{
-    exercise: Exercise,
-    organization: Organization,
-    schedule: ExerciseSchedule,
-    student: User
+    exercise?: Exercise,
+    student?: Membership,
+    schedule?: ExerciseSchedule,
+    selected_words?: Word[],
+    amount_of_correct_words?: number,
+    amount_of_wrong_words?: number
 }
