@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AcademicClass } from './academic-class.model';
+import { AcademicClass, AcademicClassCreate } from './academic-class.model';
 import { ApiService } from 'src/frontend/app/core/services/api.service';
 import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
 
@@ -20,8 +20,8 @@ export class AcademicClassService {
         return this.apiService.get<AcademicClass>(this.endpointURL);
     }
 
-    createAcademicClass(academicClass: AcademicClass): Observable<AcademicClass> {
-        return this.apiService.post<AcademicClass>(this.endpointURL, academicClass);
+    createAcademicClass(academicClass: AcademicClassCreate): Observable<AcademicClassCreate> {
+        return this.apiService.post<AcademicClassCreate>(this.endpointURL, academicClass);
     }
 
     updateAcademicClass(academicClass: AcademicClass): Observable<AcademicClass> {

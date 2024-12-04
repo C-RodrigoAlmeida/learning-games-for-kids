@@ -54,8 +54,8 @@ export class ClassRegisterComponent {
     onSubmit(){
         const formData = {
             name: this.form.get('name')?.value,
-            teacher: this.form.get('teacher')?.value,
-            students: this.form.get('students')?.value
+            teacher: Number(this.form.get('teacher')?.value),
+            students: this.form.get('students')?.value.map(student => Number(student))
         }
 
         this.academicClassService.createAcademicClass(formData).subscribe(response => {

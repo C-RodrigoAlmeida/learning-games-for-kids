@@ -7,3 +7,9 @@ export interface AcademicClass extends BaseModel {
     teacher: User,
     students: User[]
 }
+
+export interface AcademicClassCreate {
+    name: string,
+    teacher: number,
+    students: number[]
+}
