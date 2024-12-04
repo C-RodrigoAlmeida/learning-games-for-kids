@@ -30,8 +30,11 @@ export class SidebarComponent {
     redirectToPanel(): void {
         this.authService.checkSession().subscribe({
             next: (res) => {
-                console.error('res: ', res);
-                // this.router.navigate(['/login']);
+                if (res.membership.role == "admin" || res.membership.role == "teacher") {
+                    this.router.navigate(['/teacher/panel']);
+                } else {
+                    this.router.navigate(['/student/panel']);
+                }
             },
             error: (error) => {
                 console.error('Error: ', error);
