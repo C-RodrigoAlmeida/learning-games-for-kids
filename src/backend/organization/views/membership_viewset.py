@@ -12,6 +12,12 @@ __all__ = ["MembershipViewSet"]
 class MembershipViewSet(viewsets.ModelViewSet):
     queryset = Membership.objects.all()
 
+    def get_queryset(self):
+        if self.action == 'list':
+            return Membership.objects.filter(organization__id=self.request.session.get("membership", None).get("organization", None).get("id", None))
+        
+        return Membership.objects.all()
+    
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 

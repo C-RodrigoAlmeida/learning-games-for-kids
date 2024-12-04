@@ -68,9 +68,9 @@ export class PlayComponent {
       fd.append('amount_of_correct_words', correctCount.toString());
       fd.append('amount_of_wrong_words', wrongCount.toString());
 
-      this.exerciseRecordService.createExerciseRecord(fd).subscribe(() => {
-        this.router.navigate(['/exercise/result']);
-      });
+      // this.exerciseRecordService.createExerciseRecord(fd).subscribe(() => {
+      //   this.router.navigate(['/exercise/result']);
+      // });
       
       this.router.navigate(['/exercise/result']);
     }
