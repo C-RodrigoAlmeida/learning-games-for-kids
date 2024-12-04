@@ -4,7 +4,7 @@ import { AuthGuard } from "./core/guards/auth.guard";
 import { ProfileComponent } from "./features/account/profile/profile.component";
 import { LoginComponent } from "./features/auth/components/login/login.component";
 import { CalendarComponent } from "./shared/components/calendar/calendar.component";
-import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
+// import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 import { RegisterComponent } from "./features/auth/components/register/register.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
@@ -12,6 +12,8 @@ import { TeacherPanelComponent } from "./features/organization/pages/teacher-pan
 import { StudentPanelComponent } from "./features/organization/pages/student-panel/student-panel.component";
 import { OrganizationSelectionComponent } from "./features/organization/pages/org-selection/org-selection.component";
 import { MembershipRegisterComponent } from "./features/organization/pages/membership-register/membership-register.component";
+import { WordRegistrationComponent } from "./features/words-soup-game/pages/word-registration/word-registration.component";
+import { ExerciseRegistrationComponent } from "./features/words-soup-game/pages/exercise-registration/exercise-registration";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -59,10 +61,20 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'play',
-        component: PlayComponent,
+        path: 'word-registration',
+        component: WordRegistrationComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: 'exercise-registration',
+        component: ExerciseRegistrationComponent,
+        canActivate: [AuthGuard]
+    },
+    // {
+    //     path: 'play',
+    //     component: PlayComponent,
+    //     canActivate: [AuthGuard]
+    // },
     {
         path: '**',
         component: NotFoundComponent

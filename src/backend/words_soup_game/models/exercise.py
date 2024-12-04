@@ -8,6 +8,7 @@ from src.backend.organization.models.organization import Organization
 __all__ = ["Exercise"]
 
 class Exercise(BaseModel):
+    title = models.CharField(max_length=255)
     wrong_words = models.ManyToManyField(Word, related_name="exercises")
     correct_word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name="correct_word_exercises")
     is_public = models.BooleanField(default=False)

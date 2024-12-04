@@ -11,7 +11,7 @@ class ExerciseSerializer(BaseSerializer):
     organization = OrganizationDisplaySerializer()
     class Meta(BaseSerializer.Meta):
         model = Exercise
-        fields = BaseSerializer.Meta.fields + ["wrong_words", "correct_word", "is_public", "organization"]
+        fields = BaseSerializer.Meta.fields + ["title", "wrong_words", "correct_word", "is_public", "organization", "created_by"]
 
 class ExerciseDisplaySerializer(ExerciseSerializer):
     class Meta(ExerciseSerializer.Meta):
