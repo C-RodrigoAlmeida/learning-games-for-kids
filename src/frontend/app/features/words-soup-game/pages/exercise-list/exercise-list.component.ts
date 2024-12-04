@@ -33,8 +33,8 @@ export class ExerciseListComponent {
 
   exercises: Exercise[] = [];
 
-  navigateToExerciseUpdate(exerciseId: number) {
-    this.router.navigate(['/exercise/:id', exerciseId]);
+  navigateToExerciseSchedule(exerciseId: number) {
+    this.router.navigate(['/exercise/schedule/', exerciseId]);
   }
 
   exerciseDelete(exerciseId: number) {

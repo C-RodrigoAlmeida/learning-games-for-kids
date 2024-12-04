@@ -28,10 +28,10 @@
                     <td class="px-6 py-4">{{ exercise.organization.name }}</td>
                     <td class="px-6 py-4 flex justify-center gap-3">
                         <button 
-                            (click)="navigateToExerciseUpdate(exercise.id)" 
+                            (click)="navigateToExerciseSchedule(exercise.id)" 
                             class="bg-purple-600 text-white py-2 px-3 rounded-full shadow-md hover:bg-purple-700 transition-all"
                             title="Editar">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i class="fa-solid fa-calendar-days"></i>
                         </button>
                         <button 
                             (click)="exerciseDelete(exercise.id)" 
