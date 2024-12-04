@@ -17,8 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 
+from django_settings import settings
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
@@ -35,4 +37,5 @@ urlpatterns = [
     api_include("src.backend.words_soup_game.urls"),
     api_include("src.backend.organization.urls"),
     api_include("src.backend.accounts.urls"),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]

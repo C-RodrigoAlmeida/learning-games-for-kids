@@ -1,0 +1,38 @@
+<app-sidebar></app-sidebar>
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+	<div class="py-3 sm:max-w-xl sm:mx-auto">
+        <div class="mb-10">
+            <h1 class="text-2xl text-center font-bold text-whiteS">lista de exercícios</h1>
+        </div>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    
+                </tr>
+                <tr>
+                    <th class="px-6 py-3" scope="col">Thumbnail</th>
+                    <th class="px-6 py-3" scope="col">Titulo</th>
+                    <th class="px-6 py-3" scope="col">Palavra certa</th>
+                    <th class="px-6 py-3" scope="col">Palavras erradas</th>
+                    <th class="px-6 py-3" scope="col">Público?</th>
+                    <th class="px-6 py-3" scope="col">Organização</th>
+                    <th class="px-6 py-3" scope="col">Açoes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let exercise of exercises" class="bg-white border-b">
+                    <td class="px-6 py-4"><img src="{{ exercise.image }}" alt="Thumbnail"></td>
+                    <td class="px-6 py-4">{{ exercise.title }}</td>
+                    <td class="px-6 py-4">{{ exercise.correct_word.name }}</td>
+                    <td class="px-6 py-4">{{ getWrongWords(exercise) }}</td>
+                    <td class="px-6 py-4">{{ exercise.is_public ? 'Sim' : 'Não' }}</td>
+                    <td class="px-6 py-4">{{ exercise.organization.name }}</td>
+                    <td class="px-6 py-4 flex flex-row gap-3 justify-center">
+                        <button (click)="navigateToExerciseUpdate(exercise.id)" class="bg-blue-800 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-900"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button (click)="exerciseDelete(exercise.id)" class="bg-red-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

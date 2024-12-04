@@ -17,3 +17,6 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user, organization=Organization.objects.get(id=self.request.session.get('membership', None).get('organization', None).get('id', None)))
+
+    def perform_destroy(self, instance):
+        instance.delete(soft=True)
