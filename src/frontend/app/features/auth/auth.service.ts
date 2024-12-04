@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 import { LoginCredentials, Session } from './models/auth.model';
+import { Membership } from '../organization/membership/membership.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class AuthService {
       catchError((error) => {
         console.error(error);
         return of(null);
+      })
+    );
+  }
+
+  createSessionMembership(session: Membership): Observable<Membership> {
+    return this.apiService.post<Membership>(`${this.endpoint}/session/`, session).pipe(
+      tap((response: Membership) => {
+        console.log(response);
       })
     );
   }

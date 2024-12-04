@@ -68,4 +68,22 @@ class SessionView(APIView):
     def get(self, request):
         return Response({
             'user': UserAuthSerializer(request.user).data
-        }) 
+        })
+    
+    @extend_schema(tags=['Authentication'])
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        membership = request.data
+
+        if not membership:
+            return Response(
+                {"membership": ["This field is required."]},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        request.session['membership'] = membership
+
+        return Response(
+            {"message": "Session updated", "membership": membership},
+            status=status.HTTP_200_OK
+        )
