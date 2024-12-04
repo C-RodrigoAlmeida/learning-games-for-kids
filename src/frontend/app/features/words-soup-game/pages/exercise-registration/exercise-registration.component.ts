@@ -5,14 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { WordService } from '../../words/words.service';
-import { Exercise } from '../../exercises/exercise/exercise.model';
 import { ExerciseService } from '../../exercises/exercise/exercise.service';
 import { SidebarComponent } from 'src/frontend/app/shared/components/sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-exercise-registration',
-  templateUrl: './exercise-registration.html',
+  templateUrl: './exercise-registration.component.html',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, SidebarComponent]
 })
@@ -44,26 +43,31 @@ export class ExerciseRegistrationComponent {
   onSubmit() {
     if (!this.exerciseForm.valid) return;
     this.isLoading = true;
-    const formData: Exercise = {
-      title: this.title.value,
-      correct_word: this.correctWord.value,
-      wrong_words: this.wrongWords.value,
-      is_public: this.isPublic.value,
-      image: this.image.value
-    }
+  
+    const fd = new FormData();
+    fd.append('title', this.exerciseForm.get('title')?.value);
+    fd.append('image', this.exerciseForm.get('image')?.value);
+  
+    // Append each wrong word individually to FormData
+    const wrongWords = this.exerciseForm.get('wrongWords')?.value || [];
+    wrongWords.forEach((word: number) => {
+      fd.append('wrong_words', word.toString());
+    });
+  
+    fd.append('correct_word', this.exerciseForm.get('correctWord')?.value);
+    fd.append('is_public', this.exerciseForm.get('isPublic')?.value);
 
-    this.exerciseService.createExercise(formData).subscribe({
+    this.exerciseService.createExercise(fd).subscribe({
       next: () => {
-        this.router.navigate(['/exercises'])
+        this.router.navigate(['/exercises']);
       },
       error: (error) => {
-        console.log(error)
+        console.log(error);
         this.errorMessage = error.error?.message || 'Algo deu errado. Tente novamente.';
         this.isLoading = false;
       }
     });
   }
-
   onCancel() {
     this.router.navigate(['/exercises']);
   }
@@ -71,10 +75,19 @@ export class ExerciseRegistrationComponent {
   onCheckboxChange(event: any) {
     const selections = this.exerciseForm.controls['wrongWords'] as FormArray;
     if (event.target.checked) {
-      selections.push(this.formBuilder.nonNullable.control(event.target.value));
+      selections.push(this.formBuilder.nonNullable.control(parseInt(event.target.value, 10)));
     } else {
-      const index = selections.controls.findIndex(x => x.value === event.target.value);
+      const index = selections.controls.findIndex(x => x.value === parseInt(event.target.value, 10));
       selections.removeAt(index);
+    }
+  }
+  
+
+  onFilechange(event: any) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      this.exerciseForm.patchValue({ image: file });
+      this.exerciseForm.get('image')?.updateValueAndValidity();
     }
   }
 

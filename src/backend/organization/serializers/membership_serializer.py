@@ -5,7 +5,7 @@ from src.backend.accounts.serializers import UserDisplaySerializer
 from src.backend.organization.serializers.organization_serializer import OrganizationDisplaySerializer
 from src.backend.organization.models import Membership
 
-__all__ = ["MembershipSerializer", "MembershipCreateSerializer"]
+__all__ = ["MembershipSerializer", "MembershipCreateSerializer", "MembershipUpdateSerializer"]
 
 class BaseMembershipSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
@@ -21,3 +21,7 @@ class MembershipSerializer(BaseMembershipSerializer):
 class MembershipCreateSerializer(BaseMembershipSerializer):
     class Meta(BaseMembershipSerializer.Meta):
         fields = ["organization", "role"]
+
+class MembershipUpdateSerializer(BaseMembershipSerializer):
+    class Meta(BaseMembershipSerializer.Meta):
+        fields = ["is_active"]

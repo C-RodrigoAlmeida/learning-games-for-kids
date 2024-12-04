@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from src.backend.organization.models import Membership
 from src.backend.organization.models.organization import Organization
 from src.backend.organization.serializers.organization_serializer import OrganizationSerializer
-from src.backend.organization.serializers import MembershipSerializer, MembershipCreateSerializer
+from src.backend.organization.serializers import MembershipSerializer, MembershipCreateSerializer, MembershipUpdateSerializer
 
 __all__ = ["MembershipViewSet"]
 
@@ -15,13 +15,13 @@ class MembershipViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    def get_serializer_class(self) -> MembershipSerializer | MembershipCreateSerializer:
+    def get_serializer_class(self) -> MembershipSerializer | MembershipCreateSerializer | OrganizationSerializer:
         if self.action == 'create': 
             return MembershipCreateSerializer
         
-        if self.action == 'organizations':
-            return MembershipSerializer
-        
+        if self.action == 'update' or self.action == 'partial_update':
+            return MembershipUpdateSerializer
+    
         if self.action == 'organizations_not_member':
             return OrganizationSerializer
         

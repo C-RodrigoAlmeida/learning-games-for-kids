@@ -12,7 +12,7 @@ export class ExerciseService {
 
     constructor(private apiService: ApiService) {}
     
-    createExercise(exercise: Exercise): Observable<Exercise> {
+    createExercise(exercise: any): Observable<Exercise> {
         return this.apiService.post<Exercise>(this.endpointURL, exercise);
     }
     
