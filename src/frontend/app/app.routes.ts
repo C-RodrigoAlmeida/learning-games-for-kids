@@ -18,6 +18,7 @@ import { PlayComponent } from "./features/words-soup-game/pages/play/play.compon
 import { ExerciseListComponent } from "./features/words-soup-game/pages/exercise-list/exercise-list.component";
 import { ExerciseScheduleComponent } from "./features/organization/pages/teacher-panel/exercise-schedule/exercise-schedule.component";
 import { ClassRegisterComponent } from "./features/organization/pages/teacher-panel/class-register/class-register.component";
+import { StudentScoreComponent } from "./features/organization/pages/student-panel/student-score/student-score.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: "full" },
@@ -90,6 +91,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'exercise/list',
+        component: ExerciseListComponent,
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'class/register',
         component: ClassRegisterComponent,
         canActivate: [AuthGuard]
@@ -97,6 +103,11 @@ export const routes: Routes = [
     {
         path: 'play',
         component: PlayComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'student/score',
+        component: StudentScoreComponent,
         canActivate: [AuthGuard]
     },
     {

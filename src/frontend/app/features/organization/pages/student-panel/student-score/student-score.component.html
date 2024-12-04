@@ -1,0 +1,61 @@
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="max-w-md mx-auto">
+                <div class="text-center">
+                    <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Seu Desempenho</h1>
+                    
+                    <div class="mb-8">
+                        <div class="w-32 h-32 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-4xl font-bold text-green-600">85%</span>
+                        </div>
+                        <p class="text-gray-600">Média Geral</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-2">Últimos Exercícios</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Sopa de Letras #1</span>
+                                    <span class="text-green-600 font-semibold">90%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Sopa de Letras #2</span>
+                                    <span class="text-yellow-600 font-semibold">75%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Sopa de Letras #3</span>
+                                    <span class="text-green-600 font-semibold">95%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-2">Estatísticas</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-blue-600">24</p>
+                                    <p class="text-sm text-gray-600">Exercícios Completados</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-green-600">18</p>
+                                    <p class="text-sm text-gray-600">Acertos Consecutivos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button 
+                        (click)="navigateTo('/student-panel')"
+                        class="mt-8 w-full bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 transition-colors"
+                    >
+                        Voltar ao Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
