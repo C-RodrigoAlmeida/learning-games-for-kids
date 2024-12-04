@@ -6,8 +6,12 @@
 @font-face {
     font-family: 'Bariol';
     src: url('./assets/fonts/bariol_regular-webfont.ttf') format('truetype');
-  }
+}
 
 body {
     font-family: 'Bariol', sans-serif;
+}
+
+.p-dialog-content {
+    overflow: hidden !important;
 }

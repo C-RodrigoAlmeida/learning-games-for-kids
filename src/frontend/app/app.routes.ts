@@ -12,7 +12,7 @@ import { TeacherPanelComponent } from "./features/organization/pages/teacher-pan
 import { StudentPanelComponent } from "./features/organization/pages/student-panel/student-panel.component";
 import { OrganizationSelectionComponent } from "./features/organization/pages/org-selection/org-selection.component";
 import { MembershipRegisterComponent } from "./features/organization/pages/membership-register/membership-register.component";
-import { StudentsListComponent } from "./features/organization/pages/teacher-panel/student-list/students-list.component";
+import { StudentsListComponent } from "./features/organization/pages/teacher-panel/students/list/list.component";
 import { WordRegistrationComponent } from "./features/words-soup-game/pages/word-registration/word-registration.component";
 import { ExerciseRegistrationComponent } from "./features/words-soup-game/pages/exercise-registration/exercise-registration.component";
 import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";

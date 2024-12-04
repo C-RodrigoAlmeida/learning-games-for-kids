@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Organization } from './organization.model';
+import { Organization, OrganizationRegisterStudent } from './organization.model';
 import { ApiService } from 'src/frontend/app/core/services/api.service';
 import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-response.interface';
 
@@ -8,9 +8,9 @@ import { PaginatedResponse } from 'src/frontend/app/core/models/paginated-respon
     providedIn: 'root',
 })
 export class OrganizationService {
-    endpointURL = '/organization/';
+    endpointURL = '/organizations/';
 
-    constructor(private apiService: ApiService) {}
+    constructor(private apiService: ApiService) { }
 
     getMemberOrganizations(): Observable<PaginatedResponse<Organization>> {
         return this.apiService.get<Organization>('/membership/organizations');
@@ -34,6 +34,10 @@ export class OrganizationService {
 
     updateOrganization(organization: Organization): Observable<Organization> {
         return this.apiService.put<Organization>(this.endpointURL, organization);
+    }
+
+    registerStudent(user: OrganizationRegisterStudent): Observable<Organization> {
+        return this.apiService.post<Organization>('/membership/organizations/student-registration/', user);
     }
 
     deleteOrganization(id: number): Observable<Organization> {

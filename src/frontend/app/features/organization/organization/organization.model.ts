@@ -6,3 +6,7 @@ export interface Organization extends BaseModel {
     email?: string,
     is_approved?: boolean
 }
+
+export interface OrganizationRegisterStudent {
+    user: number
+}
