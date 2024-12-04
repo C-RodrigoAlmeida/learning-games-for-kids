@@ -1,3 +1,4 @@
+<app-sidebar></app-sidebar>
 <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
       <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
@@ -29,15 +30,38 @@
                 <span *ngIf="title?.errors?.['required']">Título do exercício é obrigatório</span>
               </div>
           </div>
-  
+
+          <div class="flex-1 min-w-0">
+            <h2>
+                Selecione a palavra correta
+            </h2>
+            <select name="correctWord" id="correctWord" formControlName="correctWord" class="w-full">
+                <option value="" disabled selected>Selecione uma palavra</option>
+                <option value="{{ word.id }}" *ngFor="let word of availableWords">{{ word.name }}</option>
+            </select>
+          </div>
           
-            <div>
-              <h2>Palavras corretas</h2>
-              <label *ngFor="let word of availableWords">
-                <input type="checkbox" [value]="word.id" (change)="onCheckboxChange($event)" />
-                {{ word.name }}
-              </label>
-            </div>
+          <div>
+            <h2>Selecione as palavras incorretas</h2>
+            <label *ngFor="let word of availableWords">
+              <input type="checkbox" [value]="word.id" (change)="onCheckboxChange($event)" />
+              {{ word.name }}
+            </label>
+          </div>
+
+          <div>
+            <h2> Deseja salvar como público ?</h2>
+
+            <label>
+              <input type="radio" formControlName="isPublic" name="isPublic" id="isPublic" value="true">
+              Sim
+            </label>
+            <label>
+              <input type="radio" formControlName="isPublic" name="isPublic" id="isPublic" value="false">
+              Não
+            </label>
+            
+          </div>
 
         <div class="relative">
             <input
@@ -63,7 +87,7 @@
             
             <!-- Preview da imagem -->
             <div *ngIf="imagePreview" class="mt-2">
-            <img [src]="imagePreview" class="max-w-xs rounded-lg shadow-md">
+              <img [src]="imagePreview" class="max-w-xs rounded-lg shadow-md">
             </div>
         </div>
         <button 

@@ -6,5 +6,7 @@ export interface Exercise extends BaseModel{
     correct_word: Word,
     wrong_words: Word[],
     is_public?: boolean,
-    organization?: Organization
+    organization?: Organization,
+    imageFile?: File,
+    imageUrl?: string
 }
