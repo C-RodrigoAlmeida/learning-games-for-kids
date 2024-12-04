@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.decorators import action
 
 from src.backend.organization.models import AcademicClasses
 from src.backend.organization.serializers import BaseAcademicClassesSerializer, AcademicClassesSerializer

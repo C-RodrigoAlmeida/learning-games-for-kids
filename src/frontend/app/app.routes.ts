@@ -16,6 +16,7 @@ import { WordRegistrationComponent } from "./features/words-soup-game/pages/word
 import { ExerciseRegistrationComponent } from "./features/words-soup-game/pages/exercise-registration/exercise-registration.component";
 import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 import { ExerciseListComponent } from "./features/words-soup-game/pages/exercise-list/exercise-list.component";
+import { ExerciseScheduleComponent } from "./features/organization/pages/teacher-panel/exercise-schedule/exercise-schedule.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: "full" },
@@ -80,6 +81,11 @@ export const routes: Routes = [
     {
         path: 'exercise/registration',
         component: ExerciseRegistrationComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'exercise/schedule/:id',
+        component: ExerciseScheduleComponent,
         canActivate: [AuthGuard]
     },
     {
