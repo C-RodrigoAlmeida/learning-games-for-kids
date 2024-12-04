@@ -8,13 +8,14 @@ import { PlayComponent } from "./features/words-soup-game/pages/play/play.compon
 import { RegisterComponent } from "./features/auth/components/register/register.component";
 import { NotFoundComponent } from "./features/auth/components/not-found/not-found.component";
 import { OrgRegisterComponent } from "./features/organization/pages/org-register/org-register.component";
-import { TeacherPanelComponent } from "./features/organization/pages/teacher-panel/teacher-panel.component";
+import { TeacherPanelComponent } from "./features/organization/pages/teacher-panel/dashboard/teacher-panel.component";
 import { StudentPanelComponent } from "./features/organization/pages/student-panel/student-panel.component";
 import { OrganizationSelectionComponent } from "./features/organization/pages/org-selection/org-selection.component";
 import { MembershipRegisterComponent } from "./features/organization/pages/membership-register/membership-register.component";
+import { StudentsListComponent } from "./features/organization/pages/teacher-panel/student-list/students-list.component";
 
 export const routes: Routes = [
-    { path: '', redirectTo:'login', pathMatch: "full" },
+    { path: '', redirectTo: 'login', pathMatch: "full" },
     {
         path: 'login',
         component: LoginComponent
@@ -51,6 +52,11 @@ export const routes: Routes = [
     {
         path: 'teacher-panel',
         component: TeacherPanelComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'teacher-panel/students',
+        component: StudentsListComponent,
         canActivate: [AuthGuard]
     },
     {
