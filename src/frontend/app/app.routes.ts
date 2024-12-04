@@ -14,6 +14,7 @@ import { OrganizationSelectionComponent } from "./features/organization/pages/or
 import { MembershipRegisterComponent } from "./features/organization/pages/membership-register/membership-register.component";
 import { WordRegistrationComponent } from "./features/words-soup-game/pages/word-registration/word-registration.component";
 import { ExerciseRegistrationComponent } from "./features/words-soup-game/pages/exercise-registration/exercise-registration";
+import { PlayComponent } from "./features/words-soup-game/pages/play/play.component";
 
 export const routes: Routes = [
     { path: '', redirectTo:'login', pathMatch: "full" },
@@ -46,12 +47,12 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'student-panel',
+        path: 'student/panel',
         component: StudentPanelComponent,
         canActivate: [AuthGuard]
     },
     {
-        path: 'teacher-panel',
+        path: 'teacher/panel',
         component: TeacherPanelComponent,
         canActivate: [AuthGuard]
     },
@@ -61,20 +62,20 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'word-registration',
+        path: 'word/registration',
         component: WordRegistrationComponent,
         canActivate: [AuthGuard]
     },
     {
-        path: 'exercise-registration',
+        path: 'exercise/registration',
         component: ExerciseRegistrationComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'play',
-    //     component: PlayComponent,
-    //     canActivate: [AuthGuard]
-    // },
+    {
+        path: 'play',
+        component: PlayComponent,
+        canActivate: [AuthGuard]
+    },
     {
         path: '**',
         component: NotFoundComponent

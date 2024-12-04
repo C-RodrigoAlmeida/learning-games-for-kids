@@ -40,10 +40,10 @@ export class OrganizationSelectionComponent {
 
   navigateToPanel(membership: Membership): void {
     if (membership.role === 'teacher' || membership.role === 'admin'){
-      this.router.navigate(['teacher-panel']);
+      this.router.navigate(['teacher/panel']);
     }
     else {
-      this.router.navigate(['student-panel']);
+      this.router.navigate(['student/panel']);
     } 
       
   }
