@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Student } from '../../../student/student.model';
 import { StudentService } from '../../../student/student.service';
 import { TableComponent } from 'src/frontend/app/shared/components/table/table.component';
@@ -10,8 +9,7 @@ import { SidebarComponent } from 'src/frontend/app/shared/components/sidebar/sid
     selector: 'app-students-list',
     standalone: true,
     imports: [TableComponent, SidebarComponent],
-    templateUrl: './students-list.component.html',
-    // styleUrl: './students-list.component.css'
+    templateUrl: './students-list.component.html'
 })
 export class StudentsListComponent implements OnInit {
 

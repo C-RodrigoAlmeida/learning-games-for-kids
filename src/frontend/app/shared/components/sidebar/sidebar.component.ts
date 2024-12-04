@@ -10,7 +10,8 @@ import { AuthService } from 'src/frontend/app/features/auth/auth.service';
     templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
-    constructor(private authService: AuthService,
+    constructor(
+        private authService: AuthService,
         private router: Router
     ) { }
 
@@ -22,6 +23,19 @@ export class SidebarComponent {
             error: (error) => {
                 console.error('Error during logout:', error);
                 this.router.navigate(['/login']);
+            }
+        });
+    }
+
+    redirectToPanel(): void {
+        this.authService.checkSession().subscribe({
+            next: (res) => {
+                console.error('res: ', res);
+                // this.router.navigate(['/login']);
+            },
+            error: (error) => {
+                console.error('Error: ', error);
+                // this.router.navigate(['/login']);
             }
         });
     }
